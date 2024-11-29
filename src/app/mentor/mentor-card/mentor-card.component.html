@@ -1,0 +1,21 @@
+<!-- Mentor Start -->
+<div th:fragment="mentor" class="rounded overflow-hidden mb-2">
+    <div class="team-item rounded overflow-hidden mb-2">
+        <div class="team-img position-relative">
+            <div class="rounded overflow-hidden mb-2">
+                <img class="img-fluid" th:src="*{photoUrl}" alt="">
+            </div>
+            <div class="team-social">
+                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{instagram}}"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{facebook}}"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{linkedIn}}"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <a th:href="@{/mentors/{username}(username=*{username})}">
+            <div class="bg-secondary p-4">
+                <h5 th:text="|*{firstName} *{lastName}|">Jhon Doe</h5>
+            </div>
+        </a>
+    </div>
+    </div>
+    <!-- Mentor End -->

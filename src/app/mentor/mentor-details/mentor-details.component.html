@@ -1,0 +1,126 @@
+<!-- Profile Start -->
+<div class="container-fluid bg-registration py-5" style="margin: 90px 0;" th:object="${mentorProfileViewModel}">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;"></h5>
+                    <h1 class="text-white" th:text="|*{firstName} *{lastName}|">Full name</h1>
+                </div>
+                <p class="text-white" th:text="*{username}">email</p>
+<!--                <ul class="list-inline text-white m-0">
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>facebook</li>
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>linkedIn</li>
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>instagram</li>
+                </ul>-->
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0">
+                    <div class="card-header bg-light text-center p-4">
+                        <div class="m-0" th:if="${isOwner}">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-profile">Edit Profile</button>
+                            <form th:action="@{/mentors/editPhoto}" th:method="GET">
+                                <button class="btn btn-secondary" type="submit">Edit Photo</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-body rounded-bottom bg-primary p-5">
+                        <form>
+                            <div class="rounded overflow-hidden mb-2">
+                                <img class="img-fluid" th:src="*{photo}">
+                            </div>
+                            <div>
+                                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{instagram}}"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{facebook}}"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{linkedIn}}"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Profile End -->
+
+<!-- Courses Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Courses</h5>
+            <h1>My Workshops</h1>
+        </div>
+        <div class="row">
+             <div th:each="w : ${mentorWorkshops}" th:object="${w}"  class="col-lg-4 col-md-6 mb-4">
+                <div th:replace="fragments/commons::workshop"></div>
+             </div>
+        </div>
+    </div>
+</div>
+<!-- Courses End -->
+
+<!--  MODAL EDIT PROFILE -->
+<div class="modal  modal-general" id="modal-edit-profile" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-danger" role="document">
+        <div class="modal-content custom-content">
+            <div class="modal-header">
+                <h4 class="title-modal gold-text">EDIT YOUR PROFILE</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <!------------------------------------------ FORM MODAL ----------------------------------------->
+            <form class="modal-body" th:action="@{/mentors/profile}" th:method="patch" th:object="${mentorProfileUpdateBindingModel}">
+                <script th:inline="javascript" th:if="${hasErrors}">$("#modal-edit-profile").modal("show");</script>
+                <div class="form-group">
+                <input th:field="*{firstName}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control border-0 p-4"
+                       placeholder="First name"
+                       required="required" />
+                    <small id="firstNameHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                        First name length must be between 3 and 20 characters!
+                    </small>
+        </div>
+                <div class="form-group">
+                    <input th:field="*{lastName}"
+                           th:errorclass="is-invalid"
+                           type="text"
+                           class="form-control border-0 p-4"
+                           placeholder="Last name"
+                           required="required"/>
+                    <small id="lastNameHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                        Last name length must be between 3 and 20 characters!
+                    </small>
+                </div>
+                <div class="form-group">
+                    <input th:field="*{facebook}"
+                           th:errorclass="is-invalid"
+                           type="text"
+                           class="form-control border-0 p-4"
+                           placeholder="Your facebook account"
+                    />
+                </div>
+                <div class="form-group">
+                    <input th:field="*{instagram}"
+                           th:errorclass="is-invalid"
+                           type="text"
+                           class="form-control border-0 p-4"
+                           placeholder="Your instagram account"
+                    />
+                </div>
+                <div class="form-group">
+                    <input th:field="*{linkedIn}"
+                           th:errorclass="is-invalid"
+                           type="text"
+                           class="form-control border-0 p-4"
+                           placeholder="Your LinkedIn account"
+                    />
+                </div>
+                <button class="btn-edit-profile" id="btn-edit-profile" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+

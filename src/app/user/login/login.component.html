@@ -26,16 +26,17 @@
                 <div class="card border-0">
                     <form class="login" #form="ngForm" (ngSubmit)="login(form)">
                         <fieldset>
-                            <div class="card-header bg-light text-center p-4">
+                            <div class="card-header bg-light text-center p-4"
+                                [style]="{ backgroundColor: 1==1 ? 'grey' : '#eaa152' }">
                                 <h1 class="m-0">Sign In Now</h1>
                             </div>
                             <div class="card-body rounded-bottom bg-primary p-5">
 
 
-                                <p cclass="form-group">
+                                <p class="form-group">
                                     <label for="email"><span><i class="fas fa-envelope"></i></span></label>
                                     <!-- class="input-error" -->
-                                    <input [class]="(
+                                    <input class=" form-control border-0 p-4" [class]="(
                                             (inputEmail?.touched && inputEmail?.errors?.['required']) || 
                                              (inputEmail?.touched && inputEmail?.errors?.['emailValidator']))
                                              ? 'input-error': ''" type="email" name="email" id="email"
@@ -46,11 +47,11 @@
                                 @if(inputEmail?.touched){
                                 <div>
                                     @if(inputEmail?.errors?.['required']){
-                                    <p class="error form-control border-0 p-4">Email is required!</p>
+                                    <p class="error">Email is required!</p>
                                     }
                                     <!--  -->
                                     @if(inputEmail?.errors?.['emailValidator']){
-                                    <p class="error form-control border-0 p-4">Email is not valid!</p>
+                                    <p class="error ">Email is not valid!</p>
                                     }
                                 </div>
                                 }
@@ -67,7 +68,7 @@
                                     </div> -->
                                 <p class="field field-icon">
                                     <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                                    <input [class]="(
+                                    <input class="form-control border-0 p-4" [class]="(
                                               (inputPassword?.touched && inputPassword?.errors?.['required']) || 
                                                (inputPassword?.touched && inputPassword?.errors?.['minlength']))
                                                ? 'input-error': ''" type="password" name="password" id="password"
@@ -77,11 +78,11 @@
                                 @if(inputPassword?.touched){
                                 <div>
                                     @if(inputPassword?.errors?.['required']){
-                                    <p class="error form-control border-0 p-4">Password is required!</p>
+                                    <p class="error">Password is required!</p>
                                     }
 
                                     @if(inputPassword?.errors?.['minlength']){
-                                    <p class="error form-control border-0 p-4">Password must be at least 5 characters!
+                                    <p class="error">Password must be at least 5 characters!
                                     </p>
                                     }
                                 </div>

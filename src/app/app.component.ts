@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import { TopBarComponent } from './core/top-bar/top-bar.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 // import { Carousel04Component } from './carousel/carousel.component';
 
 @Component({
@@ -12,7 +13,8 @@ import { FooterComponent } from './core/footer/footer.component';
     RouterOutlet,
     NavBarComponent,
     TopBarComponent,
-    FooterComponent
+    FooterComponent,
+    AuthenticateComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

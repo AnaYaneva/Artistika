@@ -25,101 +25,22 @@
 
                     <form class="register" [formGroup]="form" (ngSubmit)="register()">
 
-                        <!-- email
-                        <p class="field field-icon">
-                            <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                            <input [class]="
-                                isFieldTextMissing('email') || isEmailNotValid ? 'input-error' : ''
-                              " type="email" name="email" id="email" placeholder="john.doe@gmail.com"
-                                formControlName="email" />
-                        </p>
-
-                        @if(form.get('email')?.touched){
-                        <div>
-                            @if(form.get('email')?.errors?.['required']){
-                            <p class="error">Email is required!</p>
-                            }
-                            
-                            @if(form.get('email')?.errors?.['emailValidator']){
-                            <p class="error">Email is not valid!</p>
-                            }
-                        </div>
-                        } -->
-                        <!-- telephone -->
-                        <p class="field field-icon">
-                            <label for="tel"><span><i class="fas fa-phone"></i></span></label>
-                            <select name="select-tel" id="select-tel" class="tel">
-                                <option value="00359">+359</option>
-                            </select>
-                            <input type="text" name="tel" id="tel" placeholder="885 888 888" formControlName="tel" />
-                        </p>
-
-                        <div formGroupName="passGroup">
-                            <!-- password -->
-                            <p class="field field-icon">
-                                <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                                <input [class]="(
-                                  (passGroup?.get('password')?.touched &&
-                                   passGroup?.get('password')?.errors?.['required'] ) ||
-                                   (passGroup?.get('password')?.touched && 
-                                   passGroup?.get('password')?.errors?.['minlength'])
-                                ) ? 'input-error' : ''" type="password" name="password" id="password"
-                                    placeholder="******" formControlName="password" />
-                            </p>
-
-                            @if(passGroup?.get('password')?.touched){
-                            <div>
-                                @if(passGroup?.get('password')?.errors?.['required']){
-                                <p class="error">Password is required!</p>
-                                }
-                                <!--  -->
-                                @if(passGroup?.get('password')?.errors?.['minlength']){
-                                <p class="error">Password must be at least 5 characters!</p>
-                                }
-                            </div>
-                            }
-
-                            <!-- rePassword -->
-                            <p class="field field-icon form-control border-0 p-4">
-                                <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
-                                <input [class]="(
-                                  (passGroup?.get('rePassword')?.touched &&
-                                  (passGroup?.get('rePassword')?.errors?.['required'] ||
-                                  passGroup?.errors?.['matchPasswordsValidator'])) 
-                                ) ? 'input-error' : ''" type="password" name="rePassword" id="rePassword"
-                                    placeholder="******" formControlName="rePassword" />
-                            </p>
-
-                            @if(passGroup?.get('rePassword')?.touched){
-                            <div>
-                                @if(passGroup?.errors?.['matchPasswordsValidator'] ||
-                                passGroup?.get('rePassword')?.errors?.['required']){
-                                <p class="error">Repeat Password does not match password!</p>
-                                }
-                            </div>
-                            }
-                        </div>
-
-                        <button [disabled]="form.invalid"
-                            [style]="{ backgroundColor: form.invalid ? 'grey' : '#234465' }">
-                            Create Account
-                        </button>
-
                         <p class="text-center">
                             Have an account?
                             <a routerLink="/login">Log In</a>
                         </p>
 
                         <div class="card-body rounded-bottom bg-primary p-5">
+
                             <!-- username -->
                             <div class="form-group">
                                 <p class="field field-icon">
                                     <label for="firstName">
                                         <span><i class="fas fa-user "></i></span>
                                     </label>
-                                    <input [class]="isFieldTextMissing('firstName') || isNotMinLength
+                                    <input class="form-control border-0 p-4" [class]="isFieldTextMissing('firstName') || isNotMinLength('firstName')
                                                                               ? 'input-error '
-                                                                              : 'form-control border-0 p-4'
+                                                                              : ''
                                                                           " type="text" name="firstName" id="firstName"
                                         placeholder="First name" formControlName="firstName" />
                                 </p>
@@ -139,33 +60,13 @@
                             </div>
 
 
-                            <!-- <form th:action="@{/mentors/register}" th:method="post"
-                            th:object="${mentorRegisterBindingModel}" enctype="multipart/form-data"> -->
-
-                            <!-- <div class="form-group">
-                                <input th:field="*{firstName}" th:errorclass="is-invalid" type="text"
-                                    class="form-control border-0 p-4" placeholder="First name" required="required" />
-                                <div th:errors="*{firstName}" class="invalid-feedback bg-danger text-light rounded">
-                                    First name length must be between 3 and 20 characters!
-                                </div>
-                            </div> -->
-
-                            <!-- 
-                            <div class="form-group">
-                                <input th:field="*{lastName}" th:errorclass="is-invalid" type="text"
-                                    class="form-control border-0 p-4" placeholder="Last name" required="required" />
-                                <div th:errors="*{lastName}" class="invalid-feedback bg-danger text-light rounded">
-                                    Last name length must be between 3 and 20 characters!
-                                </div>
-                            </div> -->
-
                             <!-- username -->
                             <div class="form-group">
                                 <p class="field field-icon">
-                                    <label for="lastName">
-                                        <span><i class="fas fa-user "></i></span>
-                                    </label>
-                                    <input class="form-control border-0 p-4" [class]="isFieldTextMissing('lastName') || isNotMinLength
+                                    <!-- <label for="lastName">
+                                            <span><i class="fas fa-user "></i></span>
+                                        </label> -->
+                                    <input class="form-control border-0 p-4" [class]="isFieldTextMissing('lastName') || isNotMinLength('lastName')
                                                                                                           ? 'input-error '
                                                                                                           : ''
                                                                                                       " type="text"
@@ -186,6 +87,7 @@
                                 }
 
                             </div>
+
 
                             <!-- email -->
                             <div class="form-group">
@@ -247,7 +149,7 @@
                                                                                       (passGroup?.get('rePassword')?.touched &&
                                                                                       (passGroup?.get('rePassword')?.errors?.['required'] ||
                                                                                       passGroup?.errors?.['matchPasswordsValidator'])) 
-                                                                                    ) ? 'input-error is-invalid' : ''"
+                                                                                    ) ? 'input-error' : ''"
                                             type="password" name="rePassword" id="rePassword" placeholder="******"
                                             formControlName="rePassword" />
                                     </p>
@@ -263,75 +165,51 @@
                                 </div>
 
                             </div>
-                            <!-- <div class="form-group">
-                                <input th:field="*{username}" th:errorclass="is-invalid" type="email"
-                                    class="form-control border-0 p-4" placeholder="Your email" required="required" />
-                                <div th:errors="*{username}" class="invalid-feedback bg-danger text-light rounded">
-                                    User email should be valid
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input th:field="*{password}" th:errorclass="is-invalid" type="password"
-                                    class="form-control border-0 p-4" placeholder="Password" required="required" />
-                                <div th:errors="*{password}" class="invalid-feedback bg-danger text-light rounded">
-                                    Password length must be between 3 and 20 characters!
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input th:field="*{confirmPassword}" th:errorclass="is-invalid" type="password"
-                                    class="form-control border-0 p-4" placeholder="Confirm password"
-                                    required="required" />
-                                <div th:errors="*{confirmPassword}"
-                                    class="invalid-feedback bg-danger text-light rounded">
-                                    Passwords do not match
-                                </div>
-                            </div> -->
 
-
-                            <!--&lt;!&ndash;                                <div class="form-group">-->
-                            <!--                                    <input th:field="*{photoFileName}"-->
-                            <!--                                           th:errorclass="is-invalid"-->
-                            <!--                                           type="text"-->
-                            <!--                                           class="form-control border-0 p-4"-->
-                            <!--                                           placeholder="Photo name"-->
-                            <!--                                           required="required"/>-->
-                            <!--                                    <div  th:if="${emptyName}" class="bad-credentials-message bg-danger text-light rounded">-->
-                            <!--                                        Please choose a name for your profile picture file!-->
-                            <!--                                    </div>-->
-                            <!--                                </div>&ndash;&gt;-->
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <label>Photo</label><br>
-                                <input th:object="${photo}" type="file" name="photo"
-                                    class="form-control border-0 p-4" />
-                                <div th:if="${emptyFile}" class="bad-credentials-message bg-danger text-light rounded">
-                                    Please choose a profile picture file to upload!
-                                </div>
+                                <!-- <input type="file" name="photo" class="form-control border-0 p-4" /> -->
+                                <input class="form-control border-0 p-4" id="photo" placeholder="Your facebook account"
+                                    formControlName="photo" />
                             </div>
+                            <!-- email -->
                             <div class="form-group">
-                                <input th:field="*{facebook}" th:errorclass="is-invalid" type="text"
-                                    class="form-control border-0 p-4" placeholder="Your facebook account" />
-                                <div id="facebookText" class="form-text">
-                                    You can change it anytime!
-                                </div>
+                                <p class="field field-icon ">
+                                    <label for="facebook"><span><i class="fa-brands fa-facebook"></i></span></label>
+                                    <input class="form-control border-0 p-4" id="facebook"
+                                        placeholder="Your facebook account" formControlName="facebook" />
+                                </p>
+
+
                             </div>
+
+                            <!-- email -->
                             <div class="form-group">
-                                <input th:field="*{instagram}" th:errorclass="is-invalid" type="text"
-                                    class="form-control border-0 p-4" placeholder="Your instagram account" />
-                                <div id="instagramText" class="form-text">
-                                    You can change it anytime!
-                                </div>
+                                <p class="field field-icon ">
+                                    <label for="instagram"><span><i class="fa-brands fa-instagram"></i></span></label>
+                                    <input class="form-control border-0 p-4" id="instagram"
+                                        placeholder="Your instagram account" formControlName="instagram" />
+                                </p>
+
                             </div>
+
+                            <!-- email -->
                             <div class="form-group">
-                                <input th:field="*{linkedIn}" th:errorclass="is-invalid" type="text"
-                                    class="form-control border-0 p-4" placeholder="Your LinkedIn account" />
-                                <div id="linkedInText" class="form-text">
-                                    You can change it anytime!
-                                </div>
+                                <p class="field field-icon ">
+                                    <label for="linkedIn"><span><i class="fa-brands fa-linkedin"></i></span></label>
+                                    <input class="form-control border-0 p-4" id="linkedIn"
+                                        placeholder="Your LinkedIn account" formControlName="linkedIn" />
+                                </p>
+
+
                             </div>
-                            <div>
-                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Sign Up
-                                    Now</button>
-                            </div> -->
+
+                            <a routerLink="/login" class="btn btn-dark btn-block border-0 py-3"
+                                [style]="{ backgroundColor: form.invalid ? 'grey' : '' }">
+                                Sign Up
+                                Now
+                            </a>
+
 
                         </div>
                     </form>
@@ -339,5 +217,5 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
+
     <!-- Registration End -->

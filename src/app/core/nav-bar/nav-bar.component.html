@@ -33,7 +33,13 @@
                                 <li class="nav-item"><a routerLink="/home" class="nav-item nav-link">Home</a></li>
                                 <li class="nav-item"><a routerLink="/about" class="nav-item nav-link">About</a></li>
                                 <li class="nav-item"><a routerLink="/mentors" class="nav-item nav-link">Mentors</a></li>
-                                <li class="nav-item dropdown">
+                                <li class="nav-item"><a routerLink="/workshops" class="nav-item nav-link">Workshops</a>
+                                    <!-- <li class="nav-item"><a routerLink="/categories"
+                                        class="nav-item nav-link">Categories</a>
+                                </li> -->
+                                <li class="nav-item"><a routerLink="/add" class="nav-item nav-link">Add Workshop</a>
+                                </li>
+                                <!-- <li class="nav-item dropdown">
                                     <div class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown">Workshops</a>
                                         <div class="dropdown-menu rounded-0 m-0">
@@ -43,10 +49,10 @@
                                     </div>
                                 </li>
                                 <li class="nav-item"><a routerLink="/contacts" class="nav-item nav-link">Contact</a>
-                                </li>
+                                </li> -->
 
 
-                                <li sec:authorize="hasRole('MENTOR')" class="nav-item dropdown">
+                                <!-- <li sec:authorize="hasRole('MENTOR')" class="nav-item dropdown">
                                     <div class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Mentor</a>
                                         <div class="dropdown-menu rounded-0 m-0">
@@ -67,12 +73,37 @@
                                                 class="dropdown-item">Users</a>
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
 
                         <div class="navbar-nav py-0">
+
                             <ul class="navbar-nav mr-auto col-6s">
+                                @if(isLoggedIn){
+                                <li class=" nav-item nav-link">
+                                    <a class="btn btn-primary py-2 px-4 ml-2 d-none d-lg-block"
+                                        routerLink="/users/profile">My
+                                        Profile</a>
+                                </li>
+                                <li class=" nav-item nav-link">
+                                    <div>
+                                        <button class=" nav-item nav-link" (click)="logout()">Logout</button>
+                                    </div>
+                                </li>
+                                } @else {
+                                <li class=" nav-item nav-link">
+                                    <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block"
+                                        routerLink="/login">Sign in</a>
+                                </li>
+                                <li class=" nav-item nav-link">
+                                    <a class="btn btn-primary py-2 px-4 ml-2 d-none d-lg-block"
+                                        routerLink="/register">Join Now</a>
+                                </li>
+                                }
+                            </ul>
+
+                            <!-- <ul class="navbar-nav mr-auto col-6s">
                                 <li class=" nav-item nav-link" sec:authorize="!isAuthenticated()">
                                     <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block"
                                         routerLink="/login">Sign in</a>
@@ -92,8 +123,8 @@
                                             <button (click)="logout()">Logout</button>
                                         </div>
                                     </form>
-                                </li>
-                                <li class="nav-item">
+                                </li> -->
+                            <!-- <li class="nav-item">
                                     <form th:method="get">
                                         <label class="text-white" th:text="#{navbar_language}" for="lang"></label>
                                         <select onchange="this.form.submit()" id="lang" name="lang">
@@ -105,8 +136,8 @@
                                             </option>
                                         </select>
                                     </form>
-                                </li>
-                            </ul>
+                                </li> -->
+                            <!-- </ul> -->
                         </div>
                     </div>
                 </nav>

@@ -20,12 +20,20 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent {
   form = new FormGroup({
-    username: new FormControl('', [
+
+    firstName: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(3),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
     ]),
     email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
-    tel: new FormControl(''),
+    photo: new FormControl(''),
+    facebook: new FormControl(''),
+    instagram: new FormControl(''),
+    linkedIn: new FormControl(''),
     passGroup: new FormGroup(
       {
         password: new FormControl('', [
@@ -49,10 +57,10 @@ export class RegisterComponent {
     );
   }
 
-  get isNotMinLength() {
+  isNotMinLength(controlName: string) {
     return (
-      this.form.get('username')?.touched &&
-      this.form.get('username')?.errors?.['minlength']
+      this.form.get(controlName)?.touched &&
+      this.form.get(controlName)?.errors?.['minlength']
     );
   }
 
@@ -73,14 +81,27 @@ export class RegisterComponent {
     }
 
     const {
-      username,
+      firstName,
+      lastName,
       email,
-      tel,
+      photo,
+      facebook,
+      instagram,
+      linkedIn,
       passGroup: { password, rePassword } = {},
     } = this.form.value;
 
     this.userService
-      .register(username!, email!, tel!, password!, rePassword!)
+      .register(
+        firstName!,
+        lastName!,
+        email!,
+        photo!,
+        facebook!,
+        instagram!,
+        linkedIn!,
+        password!,
+        rePassword!)
       .subscribe(() => {
         this.router.navigate(['/']);
       });

@@ -14,16 +14,16 @@ import { DatePipe } from '@angular/common';
   templateUrl: './workshop-all.component.html',
   styleUrl: './workshop-all.component.css'
 })
-export class WorkshopAllComponent implements OnInit {
-  workshops: Workshop[] = [];
-  isLoading = true;
+export class WorkshopAllComponent {
+  // workshops: Workshop[] = [];
+  // isLoading = true;
 
   constructor(private apiService: ApiService) { }
 
-  ngOnInit() {
-    // this.apiService.getWorkshops().subscribe((workshops) => {
-    // this.workshops = workshops;
-    this.isLoading = false;
-    // });
-  }
+  // ngOnInit() {
+  // this.apiService.getWorkshops().subscribe((workshops) => {
+  // this.workshops = workshops;
+  // this.isLoading = false;
+  // });
+  // }
 }

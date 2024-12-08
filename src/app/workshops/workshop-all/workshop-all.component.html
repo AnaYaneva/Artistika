@@ -1,71 +1,71 @@
-<main>
-    @if (isLoading) {
+<!-- <main> -->
+<!-- @if (isLoading) {
     <app-loader />
-    }@else {
-    <div class="theme-title">
-        <h1>workshops</h1>
-        @for (workshop of workshops; track $index) {
+    }@else { -->
+<div class="theme-title">
+    <h1>workshops</h1>
+    <!-- @for (workshop of workshops; track $index) { -->
 
-        <div class="text-center mb-5">
-            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Workshops</h5>
-            <h1>Browse Our Workshops</h1>
-        </div>
+    <div class="text-center mb-5">
+        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Workshops</h5>
+        <h1>Browse Our Workshops</h1>
+    </div>
 
 
-        <!-- Workshop Start -->
+    <!-- Workshop Start -->
+    <div class="rounded overflow-hidden mb-2">
         <div class="rounded overflow-hidden mb-2">
-            <div class="rounded overflow-hidden mb-2">
-                <img class="img-fluid" th:src="*{finalUrl}" alt="">
-            </div>
-            <div class="bg-secondary p-4">
-                <div class="d-flex justify-content-between mb-3">
-                    <!-- <small class="m-0" th:text="|*{students.size()} Students|"><i class="fa fa-users text-primary mr-2"></i>25
+            <img class="img-fluid" th:src="*{finalUrl}" alt="">
+        </div>
+        <div class="bg-secondary p-4">
+            <div class="d-flex justify-content-between mb-3">
+                <!-- <small class="m-0" th:text="|*{students.size()} Students|"><i class="fa fa-users text-primary mr-2"></i>25
                             Students</small> -->
-                    <!--<small class="m-0"><i class="far fa-clock text-primary mr-2" th:text="*{duration}"></i>01h 30m</small>-->
-                </div>
-                <!-- <a class="h5">{{ workshop.title | slice : 25 }}</a> -->
-                <div class="border-top mt-4 pt-4">
-                    <!--            <div class="d-flex justify-content-between">
+                <!--<small class="m-0"><i class="far fa-clock text-primary mr-2" th:text="*{duration}"></i>01h 30m</small>-->
+            </div>
+            <!-- <a class="h5">{{ workshop.title | slice : 25 }}</a> -->
+            <div class="border-top mt-4 pt-4">
+                <!--            <div class="d-flex justify-content-between">
                             <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
                         </div>-->
-                </div>
             </div>
         </div>
-        <!-- Workshop End -->
+    </div>
+    <!-- Workshop End -->
 
 
 
-        <div class="theme-container">
-            <div class="theme-name-wrapper">
-                <div class="theme-name">
-                    <!-- <a [routerLink]="workshop._id" class="normal"> -->
-                    <!-- <h2>{{ workshop.title | slice : 25 }}</h2> -->
-                    <!-- </a> -->
-                    <div class="columns">
-                        <div>
+    <div class="theme-container">
+        <div class="theme-name-wrapper">
+            <div class="theme-name">
+                <!-- <a [routerLink]="workshop._id" class="normal"> -->
+                <!-- <h2>{{ workshop.title | slice : 25 }}</h2> -->
+                <!-- </a> -->
+                <div class="columns">
+                    <div>
+                        <p>
+                            Date:
+                            <time>{{
+                                // workshop.created_at | date : "yyyy-mm-dd hh:mm:ss"
+                                // }}</time>
+                        </p>
+                        <div class="nick-name">
                             <p>
-                                Date:
-                                <time>{{
-                                    // workshop.created_at | date : "yyyy-mm-dd hh:mm:ss"
-                                    // }}</time>
-                            </p>
-                            <div class="nick-name">
-                                <p>
-                                    <!-- Username: <span>{{ workshop.userId.firstName }}</span> -->
-                                </p>
-                            </div>
-                        </div>
-                        <div class="subscribers">
-                            <!-- <button class="subscribe">Subscribe</button> -->
-                            <p>
-                                <!-- Subscribers: <span>{{ workshop?.subscribers?.length || 0 }}</span> -->
+                                <!-- Username: <span>{{ workshop.userId.firstName }}</span> -->
                             </p>
                         </div>
+                    </div>
+                    <div class="subscribers">
+                        <!-- <button class="subscribe">Subscribe</button> -->
+                        <p>
+                            <!-- Subscribers: <span>{{ workshop?.subscribers?.length || 0 }}</span> -->
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        }
     </div>
-    }
-</main>
+    <!-- }-->
+</div>
+<!-- } -->
+<!-- </main> -->

@@ -16,7 +16,7 @@ export class NavBarComponent {
   }
 
   get username(): string {
-    return this.userService.user?.username || '';
+    return this.userService.user?.firstName || '';
   }
 
   constructor(private userService: UserService, private router: Router) { }

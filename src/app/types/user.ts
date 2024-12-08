@@ -1,26 +1,31 @@
 export interface User {
-  themes: string[];
-  posts: string[];
-  _id: string;
-  tel: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  username: string;
+  photo: string;
+  facebook: string;
+  instagram: string;
+  linkedIn: string;
   password: string;
+  workshops: string[];
+  _id: string;
   created_at: string;
   updatedAt: string;
   __v: number;
 }
 
 export interface UserForAuth {
-  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  tel?: string;
+  photo: string;
+  facebook: string;
+  instagram: string;
+  linkedIn: string;
   password: string;
   id: string;
 }
 
 export interface ProfileDetails {
-  username: string;
   email: string;
-  tel: string;
 }

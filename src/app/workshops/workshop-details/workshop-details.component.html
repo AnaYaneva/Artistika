@@ -1,5 +1,5 @@
 <!-- Workshop Details Start -->
-<div th:fragment="workshopDetails"class="row align-items-center">
+<div th:fragment="workshopDetails" class="row align-items-center">
     <div class="col-lg-7 mb-5 mb-lg-0">
         <div class="mb-4">
             <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Category</h5>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <!-- <div class="row justify-content-center">
         <th:block th:if="${isCurrentUserOwner}">
             <a class="col-md-3 button-update"
                th:href="@{/workshop/{id}/update (id=*{id})}">
@@ -42,8 +42,8 @@
                 <i class="material-icons">delete</i>
                 Delete
             </button>
-        </th:block>
+        </th:block> -->
 
-    </div>
+    <!-- </div> -->
 </div>
 <!-- Workshop Details End -->

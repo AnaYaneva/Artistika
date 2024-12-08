@@ -1,9 +1,9 @@
-import { Post } from './post';
+import { Comment } from './comment';
 import { User } from './user';
 
 export interface Workshop {
   subscribers: string[];
-  posts: Post[];
+  comments: Comment[];
   _id: string;
   title: string;
   userId: User;

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Post } from './types/post';
+import { Comment } from './types/comment';
 import { Workshop } from './types/workshop';
 
 @Injectable({
@@ -26,10 +26,10 @@ export class ApiService {
   //   return this.http.get<Workshop>(`/api/workshops/${id}`);
   // }
 
-  // createWorkshop(refPhoto: string, finalPhoto: string, video: string, title: string, description: string) {
-  //   const payload = { refPhoto, finalPhoto, video, title, description };
-  //   return this.http.post<Workshop>(`/api/workshops`, payload);
-  // }
+  createWorkshop(refPhoto: string, finalPhoto: string, video: string, title: string, description: string) {
+    const payload = { refPhoto, finalPhoto, video, title, description };
+    return this.http.post<Workshop>(`/api/workshops`, payload);
+  }
 
   // CRUD operations
   // update -> http.put

@@ -6,6 +6,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 // import { Carousel04Component } from './carousel/carousel.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { EmailDirective } from '../../directives/email.directive';
 import { DOMAINS } from '../../constants';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { DOMAINS } from '../../constants';
 export class LoginComponent {
   domains = DOMAINS;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private fireauth: AngularFireAuth, private router: Router) { }
 
   login(form: NgForm) {
     if (form.invalid) {
@@ -24,7 +25,7 @@ export class LoginComponent {
     }
 
     const { email, password } = form.value;
-
+    this.fireauth.signInWithEmailAndPassword(email, password);
     this.userService.login(email, password).subscribe(() => {
       this.router.navigate(['/']);
     });

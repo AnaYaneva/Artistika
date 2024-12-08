@@ -22,8 +22,8 @@ export class WorkshopAllComponent implements OnInit {
 
   ngOnInit() {
     // this.apiService.getWorkshops().subscribe((workshops) => {
-    //   this.workshops = workshops;
-    //   this.isLoading = false;
+    // this.workshops = workshops;
+    this.isLoading = false;
     // });
   }
 }

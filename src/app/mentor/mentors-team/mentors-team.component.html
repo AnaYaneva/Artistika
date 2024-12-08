@@ -1,13 +1,36 @@
 <!-- Team Start -->
-<div th:fragment="team" class="container-fluid py-5">
+<div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-5">
             <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Mentors</h5>
             <h1>Meet Our Mentors</h1>
         </div>
-        <div class="row" >
-            <div th:each="m : ${mentors}" th:object="${m}" class="col-md-6 col-lg-3 text-center team mb-4">
-                <div th:replace="fragments/commons::mentor"></div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 text-center team mb-4">
+                @for (mentor of mentors; track $index) {
+                <div class="rounded overflow-hidden mb-2">
+                    <div class="team-item rounded overflow-hidden mb-2">
+                        <div class="team-img position-relative">
+                            <div class="rounded overflow-hidden mb-2">
+                                <img class="img-fluid" th:src="*{photoUrl}" alt="">
+                            </div>
+                            <div class="team-social">
+                                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{instagram}}"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{facebook}}"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" th:href="@{*{linkedIn}}"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <a th:href="@{/mentors/{username}(username=*{username})}">
+                            <div class="bg-secondary p-4">
+                                <h5 th:text="|*{firstName} *{lastName}|">Jhon Doe</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                }
             </div>
         </div>
     </div>

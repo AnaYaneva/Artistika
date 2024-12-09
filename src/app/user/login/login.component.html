@@ -24,18 +24,49 @@
 
             <div class="col-lg-5">
                 <div class="card border-0">
-                    <form class="login" #form="ngForm" (ngSubmit)="login(form)">
-                        <fieldset>
-                            <div class="card-header bg-light text-center p-4"
-                                [style]="{ backgroundColor: 1==1 ? 'grey' : '#eaa152' }">
-                                <h1 class="m-0">Sign In Now</h1>
+                    <form class="login" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+                        <div class="card-header bg-light text-center p-4"
+                            [style]="{ backgroundColor: 1==1 ? 'grey' : '#eaa152' }">
+                            <h1 class="m-0">Sign In Now</h1>
+                        </div>
+                        <div class="card-body rounded-bottom bg-primary p-5">
+                            <label for="email"><span><i class="fas fa-user"></i></span></label>
+                            <!-- <label for="username">Username</label> -->
+                            <input placeholder="Your username" class=" form-control border-0 p-4" id="username"
+                                [(ngModel)]="username" name="username" required #usernameCtrl="ngModel" />
+                            <div *ngIf="usernameCtrl.invalid && usernameCtrl.touched" class="error">
+                                <small *ngIf="usernameCtrl.errors?.['required']">Username is required.</small>
                             </div>
-                            <div class="card-body rounded-bottom bg-primary p-5">
 
 
-                                <p class="form-group">
+                            <div>
+                                <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                                <!-- <label for="password">Password</label> -->
+                                <input placeholder="Your password" class=" form-control border-0 p-4" id="password"
+                                    [(ngModel)]="password" name="password" type="password" required
+                                    #passwordCtrl="ngModel" />
+                                <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="error">
+                                    <small *ngIf="passwordCtrl.errors?.['required']">Password is required.</small>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-dark btn-block border-0 py-3" type="submit"
+                                [disabled]="loginForm.invalid" [class.loading]="isLoading">Login</button>
+
+                            <div *ngIf="loginError" class="error-message">
+                                <p>Invalid username or password. Please try again.</p>
+                            </div>
+                            <p class="text-center">
+                                Have an account?
+                                <a routerLink="/register" class="text-white">Register</a>
+                            </p>
+                        </div>
+                    </form>
+
+                    <!-- <p class="form-group">
                                     <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                                    <!-- class="input-error" -->
+                                 
                                     <input class=" form-control border-0 p-4" [class]="(
                                             (inputEmail?.touched && inputEmail?.errors?.['required']) || 
                                              (inputEmail?.touched && inputEmail?.errors?.['emailValidator']))
@@ -49,7 +80,7 @@
                                     @if(inputEmail?.errors?.['required']){
                                     <p class="error">Email is required!</p>
                                     }
-                                    <!--  -->
+                                  
                                     @if(inputEmail?.errors?.['emailValidator']){
                                     <p class="error ">Email is not valid!</p>
                                     }
@@ -57,7 +88,7 @@
                                 }
 
                                 <p class="field field-icon">
-                                    <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                                    
                                     <input class="form-control border-0 p-4" [class]="(
                                               (inputPassword?.touched && inputPassword?.errors?.['required']) || 
                                                (inputPassword?.touched && inputPassword?.errors?.['minlength']))
@@ -92,7 +123,7 @@
                             </div>
 
                         </fieldset>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>

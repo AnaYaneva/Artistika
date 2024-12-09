@@ -25,10 +25,7 @@
 
                     <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
 
-                        <p class="text-center">
-                            Have an account?
-                            <a routerLink="/login">Log In</a>
-                        </p>
+
 
                         <div class="card-body rounded-bottom bg-primary p-5">
 
@@ -73,7 +70,7 @@
                             </div> -->
                             <!-- Email -->
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email"><span><i class="fas fa-envelope"></i></span></label>
                                 <input class="form-control border-0 p-4" id="email" type="email" [(ngModel)]="email"
                                     name="email" required email #emailCtrl="ngModel" placeholder="Enter your email" />
                                 <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="error is-invalid">
@@ -84,10 +81,10 @@
 
                             <!-- Password -->
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password"><span><i class="fas fa-lock"></i></span></label>
                                 <input class="form-control border-0 p-4" id="password" type="password"
                                     [(ngModel)]="password" name="password" required minlength="6"
-                                    #passwordCtrl="ngModel" placeholder="Enter a strong password" />
+                                    #passwordCtrl="ngModel" placeholder="Enter password" />
                                 <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="error is-invalid">
                                     <small *ngIf="passwordCtrl.errors?.['required']">Password is required.</small>
                                     <small *ngIf="passwordCtrl.errors?.['minlength']">Password must be at least 6
@@ -97,7 +94,7 @@
 
                             <!-- Confirm Password -->
                             <div class="form-group">
-                                <label for="confirmPassword">Confirm Password</label>
+                                <label for="password"><span><i class="fas fa-lock"></i></span></label>
                                 <input class="form-control border-0 p-4" id="confirmPassword" type="password"
                                     [(ngModel)]="confirmPassword" name="confirmPassword" required
                                     #confirmPasswordCtrl="ngModel" placeholder="Confirm your password" />
@@ -265,7 +262,10 @@
                                 Now
                             </a>-->
 
-
+                            <p class="text-center">
+                                Have an account?
+                                <a routerLink="/login" class="text-white">Log In</a>
+                            </p>
                         </div>
                     </form>
                 </div>

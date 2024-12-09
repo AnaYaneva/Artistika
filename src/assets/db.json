@@ -75,6 +75,13 @@
       "password": "123456",
       "role": "user",
       "id": 4
+    },
+    {
+      "username": "seeadmin",
+      "email": "asb_a@gmail.bg",
+      "password": "123456",
+      "role": "user",
+      "id": 5
     }
   ]
 }

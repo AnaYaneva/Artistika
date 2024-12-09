@@ -27,17 +27,28 @@
 //   ],
 // };
 
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, RouterModule } from '@angular/router';
 
 import { routes } from './app.routes';
+
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { appInterceptor } from './app.interceptor';
+// import { appInterceptor } from './app.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([appInterceptor])),
+    // provideHttpClient(withInterceptors([appInterceptor])),
+    // provideZoneChangeDetection({ eventCoalescing: true }),
+    // provideRouter(routes),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-  ],
+    provideHttpClient(),
+    importProvidersFrom(RouterModule),
+    {
+      provide: JWT_OPTIONS,
+      useValue: JWT_OPTIONS,
+    },
+    JwtHelperService
+  ]
 };

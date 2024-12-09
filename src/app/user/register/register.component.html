@@ -23,7 +23,7 @@
                         <h1 class="m-0">Sign Up Now As Mentor</h1>
                     </div>
 
-                    <form class="register" [formGroup]="form" (ngSubmit)="register()">
+                    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
 
                         <p class="text-center">
                             Have an account?
@@ -34,6 +34,19 @@
 
                             <!-- username -->
                             <div class="form-group">
+                                <!-- <p class="field field-icon"> -->
+                                <label for="username"><span><i class="fas fa-user "></i></span></label>
+                                <input class="form-control border-0 p-4" id="username" type="text"
+                                    [(ngModel)]="username" name="username" required #usernameCtrl="ngModel"
+                                    placeholder="Enter your username" />
+                                <div *ngIf="usernameCtrl.invalid && usernameCtrl.touched" class="error is-invalid">
+                                    <small *ngIf="usernameCtrl.errors?.['required']">Username is required.</small>
+                                </div>
+
+                            </div>
+
+
+                            <!-- <div class="form-group">
                                 <p class="field field-icon">
                                     <label for="firstName">
                                         <span><i class="fas fa-user "></i></span>
@@ -50,22 +63,65 @@
                                     @if(form.get('firstName')?.errors?.['required']){
                                     <p class="error is-invalid ">First name is required!</p>
                                     }
-                                    <!--  -->
+                              
                                     @if(form.get('firstName')?.errors?.['minlength']){
                                     <p class="error is-invalid">First name must be at least 3 characters!</p>
                                     }
                                 </div>
                                 }
 
+                            </div> -->
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input class="form-control border-0 p-4" id="email" type="email" [(ngModel)]="email"
+                                    name="email" required email #emailCtrl="ngModel" placeholder="Enter your email" />
+                                <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="error is-invalid">
+                                    <small *ngIf="emailCtrl.errors?.['required']">Email is required.</small>
+                                    <small *ngIf="emailCtrl.errors?.['email']">Please enter a valid email.</small>
+                                </div>
                             </div>
 
+                            <!-- Password -->
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input class="form-control border-0 p-4" id="password" type="password"
+                                    [(ngModel)]="password" name="password" required minlength="6"
+                                    #passwordCtrl="ngModel" placeholder="Enter a strong password" />
+                                <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="error is-invalid">
+                                    <small *ngIf="passwordCtrl.errors?.['required']">Password is required.</small>
+                                    <small *ngIf="passwordCtrl.errors?.['minlength']">Password must be at least 6
+                                        characters.</small>
+                                </div>
+                            </div>
 
-                            <!-- username -->
+                            <!-- Confirm Password -->
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input class="form-control border-0 p-4" id="confirmPassword" type="password"
+                                    [(ngModel)]="confirmPassword" name="confirmPassword" required
+                                    #confirmPasswordCtrl="ngModel" placeholder="Confirm your password" />
+                                <div *ngIf="confirmPasswordCtrl.touched" class="error">
+                                    <small *ngIf="confirmPasswordCtrl.errors?.['required']">Password confirmation is
+                                        required.</small>
+                                    <small *ngIf="passwordMismatch">Passwords do not match.</small>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button class="btn btn-dark btn-block border-0 py-3" type="submit"
+                                [disabled]="registerForm.invalid || passwordMismatch || isLoading"
+                                [class.loading]="isLoading">
+                                {{ isLoading ? 'Registering...' : 'Register' }}
+                            </button>
+
+
+                            <!-- username
                             <div class="form-group">
                                 <p class="field field-icon">
-                                    <!-- <label for="lastName">
+                                   <label for="lastName">
                                             <span><i class="fas fa-user "></i></span>
-                                        </label> -->
+                                        </label> 
                                     <input class="form-control border-0 p-4" [class]="isFieldTextMissing('lastName') || isNotMinLength('lastName')
                                                                                                           ? 'input-error '
                                                                                                           : ''
@@ -79,7 +135,7 @@
                                     @if(form.get('lastName')?.errors?.['required']){
                                     <p class="error is-invalid ">Last name is required!</p>
                                     }
-                                    <!--  -->
+                               
                                     @if(form.get('lastName')?.errors?.['minlength']){
                                     <p class="error is-invalid">Last name must be at least 3 characters!</p>
                                     }
@@ -89,7 +145,7 @@
                             </div>
 
 
-                            <!-- email -->
+                      
                             <div class="form-group">
                                 <p class="field field-icon ">
                                     <label for="email"><span><i class="fas fa-envelope"></i></span></label>
@@ -105,7 +161,7 @@
                                     @if(form.get('email')?.errors?.['required']){
                                     <p class="error is-invalid">Email is required!</p>
                                     }
-                                    <!--  -->
+                                 
                                     @if(form.get('email')?.errors?.['emailValidator']){
                                     <p class="error is-invalid">Email is not valid!</p>
                                     }
@@ -114,7 +170,7 @@
                             </div>
 
                             <div formGroupName="passGroup">
-                                <!-- password -->
+                           
                                 <div class="form-group">
                                     <p class="field field-icon">
                                         <label for="password"><span><i class="fas fa-lock"></i></span></label>
@@ -133,7 +189,7 @@
                                         @if(passGroup?.get('password')?.errors?.['required']){
                                         <p class="error is-invalid">Password is required!</p>
                                         }
-                                        <!--  -->
+                                   
                                         @if(passGroup?.get('password')?.errors?.['minlength']){
                                         <p class="error  is-invalid">Password must be at least 5 characters!</p>
                                         }
@@ -141,10 +197,10 @@
                                     }
                                 </div>
 
-                                <!-- rePassword -->
+                            
                                 <div class="form-group">
                                     <p class="field field-icon">
-                                        <!-- <label for="rePassword"><span><i class="fas fa-lock"></i></span></label> -->
+                                       
                                         <input class="form-control border-0 p-4" [class]="(
                                                                                       (passGroup?.get('rePassword')?.touched &&
                                                                                       (passGroup?.get('rePassword')?.errors?.['required'] ||
@@ -168,11 +224,11 @@
 
                             <div class="form-group">
                                 <label>Photo</label><br>
-                                <!-- <input type="file" name="photo" class="form-control border-0 p-4" /> -->
+                               
                                 <input class="form-control border-0 p-4" id="photo" placeholder="Your facebook account"
                                     formControlName="photo" />
                             </div>
-                            <!-- email -->
+                         
                             <div class="form-group">
                                 <p class="field field-icon ">
                                     <label for="facebook"><span><i class="fa-brands fa-facebook"></i></span></label>
@@ -183,7 +239,7 @@
 
                             </div>
 
-                            <!-- email -->
+              
                             <div class="form-group">
                                 <p class="field field-icon ">
                                     <label for="instagram"><span><i class="fa-brands fa-instagram"></i></span></label>
@@ -193,7 +249,6 @@
 
                             </div>
 
-                            <!-- email -->
                             <div class="form-group">
                                 <p class="field field-icon ">
                                     <label for="linkedIn"><span><i class="fa-brands fa-linkedin"></i></span></label>
@@ -202,13 +257,13 @@
                                 </p>
 
 
-                            </div>
+                            </div> 
 
                             <a routerLink="/login" class="btn btn-dark btn-block border-0 py-3"
                                 [style]="{ backgroundColor: form.invalid ? 'grey' : '' }">
                                 Sign Up
                                 Now
-                            </a>
+                            </a>-->
 
 
                         </div>

@@ -80,30 +80,38 @@
                         <div class="navbar-nav py-0">
 
                             <ul class="navbar-nav mr-auto col-6s">
-                                @if(isLoggedIn){
-                                <li class=" nav-item nav-link">
-                                    <a class="btn btn-primary py-2 px-4 ml-2 d-none d-lg-block"
-                                        routerLink="/users/profile">My
-                                        Profile</a>
-                                </li>
-                                <li class=" nav-item nav-link">
-                                    <div>
-                                        <button class=" nav-item nav-link" (click)="logout()">Logout</button>
-                                    </div>
-                                </li>
-                                } @else {
-                                <li class=" nav-item nav-link">
-                                    <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block"
-                                        routerLink="/login">Sign in</a>
-                                </li>
-                                <li class=" nav-item nav-link">
-                                    <a class="btn btn-primary py-2 px-4 ml-2 d-none d-lg-block"
-                                        routerLink="/register">Join Now</a>
-                                </li>
-                                }
-                            </ul>
+                                <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+                                    <li class=" nav-item nav-link">
+                                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block"
+                                            routerLink="/login">Sign in</a>
+                                    </li>
+                                    <li class=" nav-item nav-link">
+                                        <a class="btn btn-primary py-2 px-4 ml-2 d-none d-lg-block"
+                                            routerLink="/register">Join Now</a>
+                                    </li>
+                                </ng-container>
 
-                            <!-- <ul class="navbar-nav mr-auto col-6s">
+                                <ng-template #loggedIn>
+                                    <li class=" nav-item nav-link">
+                                        <a class="btn btn-primary py-2 px-4 ml-2 d-none d-lg-block"
+                                            routerLink="/users/profile">My
+                                            Profile</a>
+                                    </li>
+                                    <li class=" nav-item nav-link">
+                                        <div>
+                                            <button class=" nav-item nav-link" (click)="logout()">Logout</button>
+                                        </div>
+                                    </li>
+                                </ng-template>
+                            </ul>
+                        </div>
+
+
+
+
+
+
+                        <!-- <ul class="navbar-nav mr-auto col-6s">
                                 <li class=" nav-item nav-link" sec:authorize="!isAuthenticated()">
                                     <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block"
                                         routerLink="/login">Sign in</a>
@@ -124,7 +132,7 @@
                                         </div>
                                     </form>
                                 </li> -->
-                            <!-- <li class="nav-item">
+                        <!-- <li class="nav-item">
                                     <form th:method="get">
                                         <label class="text-white" th:text="#{navbar_language}" for="lang"></label>
                                         <select onchange="this.form.submit()" id="lang" name="lang">
@@ -137,9 +145,9 @@
                                         </select>
                                     </form>
                                 </li> -->
-                            <!-- </ul> -->
-                        </div>
+                        <!-- </ul> -->
                     </div>
+                    <!-- </div> -->
                 </nav>
             </div>
         </div>

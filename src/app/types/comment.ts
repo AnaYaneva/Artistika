@@ -7,7 +7,7 @@ export interface Comment {
   text: string;
   userId: User;
   workshopId: Workshop;
-  created_at: string;
-  updatedAt: string;
-  __v: number;
+  //  created_at: string;
+  //  updatedAt: string;
+  //  __v: number;
 }

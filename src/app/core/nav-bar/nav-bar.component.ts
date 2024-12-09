@@ -1,28 +1,38 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UserService } from '../../user/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,
+    CommonModule,
+    RouterLinkActive],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
 
-  get isLoggedIn(): boolean {
-    return this.userService.isLogged;
+
+  constructor(private router: Router, private authService: UserService) {
   }
 
-  get username(): string {
-    return this.userService.user?.firstName || '';
+  goHome(): void {
+    this.router.navigate(['']);
   }
 
-  constructor(private userService: UserService, private router: Router) { }
-  logout() {
-    this.userService.logout().subscribe(() => {
-      this.router.navigate(['/login']);
-    });
+  isAdmin(): boolean {
+    return this.authService.getRole() === 'admin';
+  }
+
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

@@ -20,11 +20,11 @@ import { UserService } from '../../user/user.service';
 export class MentorDeatailsComponent implements OnInit {
   isEditMode: boolean = false;
 
-  profileDetails: ProfileDetails = {
-    // username: '',
-    email: '',
-    // tel: '',
-  };
+  // profileDetails: ProfileDetails = {
+  //   // username: '',
+  //   email: '',
+  //   // tel: '',
+  // };
 
   form = new FormGroup({
     username: new FormControl('', [
@@ -57,7 +57,7 @@ export class MentorDeatailsComponent implements OnInit {
       return;
     }
 
-    this.profileDetails = this.form.value as ProfileDetails;
+    // this.profileDetails = this.form.value as ProfileDetails;
 
     // const { username, email, tel } = this.profileDetails;
 

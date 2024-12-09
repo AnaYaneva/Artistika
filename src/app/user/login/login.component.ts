@@ -16,7 +16,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class LoginComponent {
   domains = DOMAINS;
 
-  constructor(private userService: UserService, private fireauth: AngularFireAuth, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   login(form: NgForm) {
     if (form.invalid) {
@@ -25,7 +25,7 @@ export class LoginComponent {
     }
 
     const { email, password } = form.value;
-    this.fireauth.signInWithEmailAndPassword(email, password);
+    // this.fireauth.signInWithEmailAndPassword(email, password);
     this.userService.login(email, password).subscribe(() => {
       this.router.navigate(['/']);
     });

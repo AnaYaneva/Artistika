@@ -10,100 +10,67 @@ import { emailValidator } from '../../utils/email.validator';
 import { DOMAINS } from '../../constants';
 import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
 import { UserService } from '../user.service';
+import Swal from 'sweetalert2';
+import { User } from '../../types/user';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [FormsModule,
+    CommonModule,
+    RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  form = new FormGroup({
+  username = '';
+  email = '';
+  password = '';
+  confirmPassword = '';
+  isLoading = false;
 
-    firstName: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
-    lastName: new FormControl('', [
-      Validators.required,
-      Validators.minLength(4),
-    ]),
-    email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
-    photo: new FormControl(''),
-    facebook: new FormControl(''),
-    instagram: new FormControl(''),
-    linkedIn: new FormControl(''),
-    passGroup: new FormGroup(
-      {
-        password: new FormControl('', [
-          Validators.required,
-          Validators.minLength(5),
-        ]),
-        rePassword: new FormControl('', [Validators.required]),
-      },
-      {
-        validators: [matchPasswordsValidator('password', 'rePassword')],
+  constructor(private authService: UserService, private router: Router) { }
+
+  // Check if passwords match
+  get passwordMismatch(): boolean {
+    return this.password !== this.confirmPassword;
+  }
+
+  onSubmit(): void {
+    if (this.username && this.password && this.email && this.confirmPassword) {
+      if (this.password !== this.confirmPassword) {
+        Swal.fire('Error', 'Passwords do not match', 'error');
+        return;
       }
-    ),
-  });
 
-  constructor(private userService: UserService, private router: Router) { }
-
-  isFieldTextMissing(controlName: string) {
-    return (
-      this.form.get(controlName)?.touched &&
-      this.form.get(controlName)?.errors?.['required']
-    );
-  }
-
-  isNotMinLength(controlName: string) {
-    return (
-      this.form.get(controlName)?.touched &&
-      this.form.get(controlName)?.errors?.['minlength']
-    );
-  }
-
-  get isEmailNotValid() {
-    return (
-      this.form.get('email')?.touched &&
-      this.form.get('email')?.errors?.['emailValidator']
-    );
-  }
-
-  get passGroup() {
-    return this.form.get('passGroup');
-  }
-
-  register() {
-    if (this.form.invalid) {
-      return;
+      this.isLoading = true;
+      this.authService
+        .register(this.username, this.email, this.password, 'user')
+        .subscribe({
+          next: (response: User) => {
+            this.authService.login(this.username, this.password).subscribe({
+              next: (loginResponse: User) => {
+                this.isLoading = false;
+                Swal.fire('Success', 'Registration and login successful!', 'success').then(() => {
+                  this.router.navigate(['/']); // Redirect to home after login
+                });
+              },
+              error: (err) => {
+                this.isLoading = false;
+                Swal.fire('Error', 'Login failed after registration', 'error');
+                console.error(err);
+              },
+            });
+          },
+          error: (err) => {
+            this.isLoading = false;
+            Swal.fire('Error', `Registration failed: ${err.message}`, 'error');
+            console.error(err);
+          },
+        });
     }
-
-    const {
-      firstName,
-      lastName,
-      email,
-      photo,
-      facebook,
-      instagram,
-      linkedIn,
-      passGroup: { password, rePassword } = {},
-    } = this.form.value;
-
-    this.userService
-      .register(
-        firstName!,
-        lastName!,
-        email!,
-        photo!,
-        facebook!,
-        instagram!,
-        linkedIn!,
-        password!,
-        rePassword!)
-      .subscribe(() => {
-        this.router.navigate(['/']);
-      });
   }
 }

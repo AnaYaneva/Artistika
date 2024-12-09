@@ -1,84 +1,108 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { UserForAuth } from '../types/user';
+import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, tap, catchError, map, Observable, throwError } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService implements OnDestroy {
-  private user$$ = new BehaviorSubject<UserForAuth | null>(null);
-  private user$ = this.user$$.asObservable();
+export class UserService {
+  private apiUrl = 'http://localhost:3000';
+  private currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+  public currentUser: Observable<User | null> = this.currentUserSubject.asObservable();
 
-  USER_KEY = '[user]';
-  user: UserForAuth | null = null;
-  userSubscription: Subscription | null = null;
-
-  get isLogged(): boolean {
-    return !!this.user;
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
+    const token = localStorage.getItem('jwt');
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      this.currentUserSubject.next(decodedToken); // Set the user data from the JWT token
+    }
   }
 
-  constructor(private http: HttpClient) {
-    this.userSubscription = this.user$.subscribe((user) => {
-      this.user = user;
-    });
+  register(username: string, email: string, password: string, role: 'admin' | 'user'): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/users`, { username, email, password, role });
   }
 
-  login(email: string, password: string) {
-    return this.http
-      .post<UserForAuth>('/api/login', { email, password })
-      .pipe(tap((user) => this.user$$.next(user)));
-  }
+  login(username: string, password: string): Observable<User> {
+    return this.http.get<User[]>(`${this.apiUrl}/users`).pipe(
+      map((users: User[]) => {
+        const filteredUsers = users.filter((user) => user.username === username);
 
-  register(
-    firstName: string,
-    lastName: string,
-    email: string,
-    photo: string,
-    facebook: string,
-    instagram: string,
-    linkedIn: string,
-    password: string,
-    rePassword: string
-  ) {
-    return this.http
-      .post<UserForAuth>('/api/register', {
-        firstName,
-        lastName,
-        email,
-        photo,
-        facebook,
-        instagram,
-        linkedIn,
-        password,
-        rePassword,
+        if (filteredUsers.length === 0) {
+          throw new Error('User not found');
+        }
+
+        const user = filteredUsers[0];
+
+        if (user.password !== password) {
+          throw new Error('Invalid credentials');
+        }
+
+        const token = this.generateMockToken(user);
+        localStorage.setItem('jwt', token);
+        this.currentUserSubject.next(user);
+
+        return user;
+      }),
+      catchError((error) => {
+        console.error('Login failed:', error.message);
+        return throwError(() => new Error('Login failed. Please try again.'));
       })
-      .pipe(tap((user) => this.user$$.next(user)));
+    );
   }
 
-  logout() {
-    return this.http
-      .post('/api/logout', {})
-      .pipe(tap((user) => this.user$$.next(null)));
+  private generateMockToken(user: User): string {
+    const header = {
+      alg: 'HS256',
+      typ: 'JWT'
+    };
+    const payload = {
+      id: user.id,
+      username: user.username,
+      role: user.role,
+      exp: Math.floor(Date.now() / 1000) + 60 * 60 // Expires in 1 hour
+    };
+    const base64Header = btoa(JSON.stringify(header));
+    const base64Payload = btoa(JSON.stringify(payload));
+    const signature = 'mock-signature'; // Simulate a signature
+
+    return `${base64Header}.${base64Payload}.${signature}`;
   }
+
+  logout(): void {
+    localStorage.removeItem('jwt');
+    this.currentUserSubject.next(null);
+  }
+
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('jwt');
+    return !!token && !this.jwtHelper.isTokenExpired(token);
+  }
+
+  getRole(): string | null {
+    return this.currentUserSubject.value?.role || null;
+  }
+
 
   getProfile() {
     return this.http
-      .get<UserForAuth>('/api/users/profile')
-      .pipe(tap((user) => this.user$$.next(user)));
+      .get<User>('/users')
+      .pipe(tap((user) => this.currentUserSubject.next(user)));
   }
 
-  updateProfile(username: string, email: string, tel?: string) {
-    return this.http
-      .put<UserForAuth>(`/api/users/profile`, {
-        username,
-        email,
-        tel,
-      })
-      .pipe(tap((user) => this.user$$.next(user)));
-  }
+  //   updateProfile(username: string, email: string, tel?: string) {
+  //     return this.http
+  //       .put<UserForAuth>(`/users`, {
+  //         username,
+  //         email,
+  //         tel,
+  //       })
+  //       .pipe(tap((user) => this.currentUserSubject.next(user)));
+  //   }
 
-  ngOnDestroy(): void {
-    this.userSubscription?.unsubscribe();
-  }
+  // getRole(): string | null {
+  //   return this.currentUserSubject.value?.role || null;
+  // }
+
 }

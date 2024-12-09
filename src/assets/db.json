@@ -1,0 +1,80 @@
+{
+  "workshops": [
+    {
+      "id": 3,
+      "title": "Artistika Front-End How-To",
+      "userId": "Ani",
+      "decription": "the best workshop",
+      "refPhoto": "",
+      "finalPhoto": "",
+      "video": "",
+      "comments": [
+        {
+          "id": "1"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "json-server",
+      "userId": "typicode",
+      "decription": "the best workshop",
+      "refPhoto": "",
+      "finalPhoto": "",
+      "video": "",
+      "comments": []
+    }
+  ],
+  "comments": [
+    {
+      "id": 5,
+      "text": "Best workshop i have been to",
+      "userId": {
+        "id": 1
+      },
+      "workshopId": {
+        "id": 1
+      }
+    },
+    {
+      "id": 6,
+      "text": "some comment",
+      "userId": {
+        "id": 1
+      },
+      "workshopId": {
+        "id": 1
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "123456",
+      "role": "admin",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "username": "user",
+      "email": "user@example.com",
+      "password": "user123",
+      "role": "user"
+    },
+    {
+      "username": "anayaneva",
+      "email": "asb_a@gmail.bg",
+      "password": "123456",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "username": "anayaneva1",
+      "email": "gosho.goshev@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "id": 4
+    }
+  ]
+}

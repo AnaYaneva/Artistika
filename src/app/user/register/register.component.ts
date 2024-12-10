@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { emailValidator } from '../../utils/email.validator';
-import { DOMAINS } from '../../constants';
 import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
 import { UserService } from '../user.service';
 import Swal from 'sweetalert2';

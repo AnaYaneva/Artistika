@@ -3,12 +3,14 @@ import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap, catchError, map, Observable, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Constant } from './../constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000';
+  apiUrl = Constant.URL_BASE;
+  userUrl = Constant.URL_BASE + '/users';
   private currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   public currentUser: Observable<User | null> = this.currentUserSubject.asObservable();
 
@@ -104,5 +106,7 @@ export class UserService {
   // getRole(): string | null {
   //   return this.currentUserSubject.value?.role || null;
   // }
-
+  getAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.userUrl}`);
+  }
 }

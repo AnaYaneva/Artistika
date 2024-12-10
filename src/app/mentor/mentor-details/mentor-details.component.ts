@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { emailValidator } from '../../utils/email.validator';
-import { DOMAINS } from '../../constants';
+// import { DOMAINS } from '../../constants';
 import { ProfileDetails } from '../../types/user';
 import { UserService } from '../../user/user.service';
 
@@ -31,7 +31,7 @@ export class MentorDeatailsComponent implements OnInit {
       Validators.required,
       Validators.minLength(5),
     ]),
-    email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
+    // email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
     tel: new FormControl(''),
   });
 

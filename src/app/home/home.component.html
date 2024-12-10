@@ -1,1 +1,146 @@
-<p>home works!</p>
+<div class="home">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <h1 class="text-white">Find Your Workshop Today</h1>
+            <p>Explore a variety of workshops available</p>
+            <button class="btn btn-primary py-2 px-4 " (click)="scrollToWorkshops()">Browse Our
+                Workshops</button>
+            <button class="btn btn-primary py-2 px-4  " (click)="scrollToMentors()">Our
+                Mentors</button>
+        </div>
+    </section>
+
+    <!-- About Start -->
+    <div class="container-fluid py-5 about">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0 about">
+                </div>
+                <div class="col-lg-7">
+                    <div class="text-left mb-4">
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">About Us</h5>
+                        <h1>Innovative Way To Learn</h1>
+                    </div>
+                    <p class="text-gray">Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores
+                        amet voluptua duo
+                        dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus
+                        ....</p>
+                    <a href="/about" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Featured workshops Section -->
+    <section class="featured-workshops" id="featured-workshops">
+        <h2>Featured Workshops</h2>
+        <div class="workshop-list">
+            <div class="workshop-card" *ngFor="let workshop of featuredWorkshops">
+                <div class="workshop-image">
+                    <img [src]="workshop.img" alt="{{ workshop.title }}" />
+                </div>
+                <div class="workshop-info">
+                    <h3>{{ workshop.title }}</h3>
+                    <p>Category: {{ workshop.categoryType }}</p>
+                    <p>Category: {{ workshop.levelType }}</p>
+                    <button (click)="viewWorkshop(workshop)" class="rent-button">View Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured mentors Section -->
+    <section class="featured-workshops" id="featured-mentors">
+        <h2>Featured mentors</h2>
+        <div class="workshop-list">
+            <div class="workshop-card" *ngFor="let mentor of featuredMentors">
+                <div class="workshop-image">
+                    <img [src]="mentor.img" alt="{{ mentor.username }}" />
+                </div>
+                <div class="workshop-info">
+                    <h3>{{ mentor.username }}</h3>
+                    <!-- <p>{{ mentor.model }}</p> -->
+                    <button (click)="viewMentor(mentor)" class="btn btn-primary py-2 px-4 ml-auto d-none
+                        d-lg-block">Rent Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-list">
+            <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+                <div class="testimonial-content">
+                    <p>"{{ testimonial.message }}"</p>
+                    <span class="customer-name">- {{ testimonial.name }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<!-- Featured Workshops Section
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Workshops</h5>
+                <h1>Our Popular Workshops</h1>
+            </div>
+            <div>
+                <div *ngFor="let workshop of featuredWorkshops" class="row" class="col-lg-4 col-md-6 mb-4">
+                    <div class="workshop-card">
+                        <div>
+                            <div class="rounded overflow-hidden mb-2">
+                                <div class="rounded overflow-hidden mb-2">
+                                    <img class="img-fluid" [src]="workshop.img" alt="{{ workshop.title }}">
+                                </div>
+                                <div class="bg-secondary p-4"> -->
+<!-- <div class="d-flex justify-content-between mb-3">
+                            <small class="m-0" th:text="|*{students.size()} Students|"><i class="fa fa-users text-primary mr-2"></i>25
+                                Students</small>
+                            <small class="m-0"><i class="far fa-clock text-primary mr-2" th:text="*{duration}"></i>01h 30m</small>
+                        </div> -->
+<!-- <a (click)="viewWorkshop(workshop)" class="h5">{{ workshop.title }}</a>
+                                    <div class="border-top mt-4 pt-4"> -->
+<!--            <div class="d-flex justify-content-between">
+                                <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                            </div>-->
+<!-- </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+<!-- <div class="workshop-image">
+                    <img [src]="workshop.img" alt="{{ workshop.title }}" />
+                </div>
+                <div class="workshop-info">
+                    <h3>{{ workshop.title }}</h3>
+                    <p>{{ workshop.userId }}</p>
+                    <button (click)="rentWorkshop(workshop)" class="rent-button">Rent Now</button>
+                </div> -->
+<!-- </div>
+            </div> -->
+<!-- </section>
+
+
+            Testimonial Section -->
+<!-- <section class="testimonials">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-list">
+                    <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+                        <div class="testimonial-content">
+                            <p>"{{ testimonial.message }}"</p>
+                            <span class="customer-name">- {{ testimonial.name }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div> -->

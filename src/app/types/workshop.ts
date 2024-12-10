@@ -1,17 +1,20 @@
 import { Comment } from './comment';
 import { User } from './user';
+import { LevelType } from './levelType';
+import { CategoryType } from './category';
 
-export interface Workshop {
+export interface CreateWorkshop {
   //  subscribers: string[];
-  comments: Comment[];
-  _id: string;
+  // comments: Comment[];
   title: string;
   userId: User;
-  //  created_at: string;
-  //  updatedAt: string;
   description: string;
-  refPhoto: string;
-  finalPhoto: string;
+  img: string;
   video: string;
-  // __v: number;
+  levelType: LevelType;
+  categoryType: CategoryType;
+}
+
+export interface Workshop extends CreateWorkshop {
+  id: number;
 }

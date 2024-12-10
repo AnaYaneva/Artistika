@@ -3,26 +3,82 @@
     {
       "id": 3,
       "title": "Artistika Front-End How-To",
-      "userId": "Ani",
+      "userId": "2",
       "decription": "the best workshop",
-      "refPhoto": "",
-      "finalPhoto": "",
-      "video": "",
-      "comments": [
-        {
-          "id": "1"
-        }
-      ]
+      "img": "../assets/images/cat-oil_paint.jpg",
+      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "levelType": "Begginer",
+      "categoryType": "Watercolors"
     },
     {
       "id": 4,
       "title": "json-server",
-      "userId": "typicode",
+      "userId": "2",
       "decription": "the best workshop",
-      "refPhoto": "",
-      "finalPhoto": "",
-      "video": "",
-      "comments": []
+      "img": "../../assets/images/cat-oil_paint.jpg",
+      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "levelType": "Begginer",
+      "categoryType": "Watercolors"
+    },
+    {
+      "id": 1,
+      "title": "json-server",
+      "userId": "2",
+      "decription": "the best workshop",
+      "img": "assets/images/cat-oil_paint.jpg",
+      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "levelType": "Begginer",
+      "categoryType": "Watercolors"
+    },
+    {
+      "id": 2,
+      "title": "json-server",
+      "userId": "2",
+      "decription": "the best workshop",
+      "img": "assets/images/cat-oil_paint.jpg",
+      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "levelType": "Begginer",
+      "categoryType": "Watercolors"
+    },
+    {
+      "id": 5,
+      "title": "json-server",
+      "userId": "2",
+      "decription": "the best workshop",
+      "img": "assets/images/cat-oil_paint.jpg",
+      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "levelType": "Begginer",
+      "categoryType": "Watercolors"
+    },
+    {
+      "id": 6,
+      "title": "json-server",
+      "userId": "2",
+      "decription": "the best workshop",
+      "img": "assets/images/cat-oil_paint.jpg",
+      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "levelType": "Begginer",
+      "categoryType": "Watercolors"
+    },
+    {
+      "id": 7,
+      "title": "json-server",
+      "userId": "2",
+      "decription": "the best workshop",
+      "img": "assets/images/cat-oil_paint.jpg",
+      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "levelType": "Begginer",
+      "categoryType": "Watercolors"
+    },
+    {
+      "id": 8,
+      "title": "json-server",
+      "userId": "2",
+      "decription": "the best workshop",
+      "img": "assets/images/cat-oil_paint.jpg",
+      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "levelType": "Begginer",
+      "categoryType": "Watercolors"
     }
   ],
   "comments": [
@@ -51,6 +107,7 @@
     {
       "username": "admin",
       "email": "admin@admin.com",
+      "img": "../assets/images/team-1.jpg",
       "password": "123456",
       "role": "admin",
       "id": 1
@@ -59,12 +116,14 @@
       "id": 2,
       "username": "user",
       "email": "user@example.com",
+      "img": "../../../assets/images/team-4.jpg",
       "password": "user123",
       "role": "user"
     },
     {
       "username": "anayaneva",
       "email": "asb_a@gmail.bg",
+      "img": "assets/images/team-3.jpg",
       "password": "123456",
       "role": "user",
       "id": 3
@@ -72,6 +131,7 @@
     {
       "username": "anayaneva1",
       "email": "gosho.goshev@gmail.com",
+      "img": "assets/images/team-2.jpg",
       "password": "123456",
       "role": "user",
       "id": 4
@@ -79,6 +139,7 @@
     {
       "username": "seeadmin",
       "email": "asb_a@gmail.bg",
+      "img": "assets/images/team-1.jpg",
       "password": "123456",
       "role": "user",
       "id": 5

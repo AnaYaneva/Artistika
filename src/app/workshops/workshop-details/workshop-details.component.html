@@ -1,49 +1,21 @@
-<!-- Workshop Details Start -->
-<!-- <div th:fragment="workshopDetails" class="row align-items-center">
-    <div class="col-lg-7 mb-5 mb-lg-0">
-        <div class="mb-4">-->
-<h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Category</h5>
-<!-- <h1 class="text-white">Title</h1>
-
-            <h3 class="text-white">Mentor</h3>
-            <h4 class="text-white">Experience level</h4>
+<section class="workshop-details fancy" *ngIf="workshop">
+    <div class="workshop-details-container">
+        <div class="workshop-image">
+            <img [src]="workshop.img" [alt]="workshop.title" />
         </div>
-        <p class="text-white">Description</p>
-        <ul class="list-inline text-white m-0">
-            <li class="py-2"><i class="fa fa-check text-primary mr-3">Reference photo</i>
-                <img class="img-fluid" th:src="@{/images/reference.jpg}">
-            </li>
-            <li class="py-2"><i class="fa fa-check text-primary mr-3">Final photo</i>
-                <img class="img-fluid" th:src="@{/images/final.jpg}">
-            </li>
-        </ul>
+        <div class="workshop-info">
+            <h2>{{ workshop.title }}</h2>
+            <ul class="workshop-specs">
+                <li><strong>Mentor:</strong> {{ workshop.userId.username }}</li>
+                <li><strong>Category:</strong> {{ workshop.categoryType }}</li>
+                <li><strong>Level of experience:</strong> {{ workshop.levelType }}</li>
+                <iframe width="560" height="315" [src]="workshop.video" frameborder="0" allowfullscreen></iframe>
+            </ul>
+            <button class="btn-book-now" (click)="onBookNow(workshop.id)">Rent Now</button>
+        </div>
     </div>
-    <div class="col-lg-5">
-        <div class="card border-0">
-            <div class="card-header bg-light text-center p-4">
-                <h1 class="m-0">Workshop</h1>
-            </div>
-            <div class="card-body rounded-bottom bg-primary p-5">
+</section>
 
-            </div>
-        </div>
-    </div> -->
-<!-- <div class="row justify-content-center">
-        <th:block th:if="${isCurrentUserOwner}">
-            <a class="col-md-3 button-update"
-               th:href="@{/workshop/{id}/update (id=*{id})}">
-                <i class="material-icons">edit</i>
-                Edit
-            </a>
-
-            <button type="submit" class="col-md-3 button-delete"
-                    data-toggle="modal"
-                    data-target="#modal-delete-workshop">
-                <i class="material-icons">delete</i>
-                Delete
-            </button>
-        </th:block> -->
-
-<!-- </div> -->
-<!-- </div> -->
-<!-- Workshop Details End -->
+<section *ngIf="!workshop" class="error-message">
+    <p>Workshop details not available. Please try again later.</p>
+</section>

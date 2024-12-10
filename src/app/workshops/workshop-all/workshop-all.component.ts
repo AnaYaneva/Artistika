@@ -1,29 +1,93 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../api.service';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Workshop } from '../../types/workshop';
-import { LoaderComponent } from '../../shared/loader/loader.component';
-import { RouterLink } from '@angular/router';
-import { SlicePipe } from '../../shared/pipes/slice.pipe';
-import { ElapsedTimePipe } from '../../shared/pipes/elapsed-time.pipe';
-import { DatePipe } from '@angular/common';
+import { WorkshopService } from '../workshop.service';
+import { CommonModule } from '@angular/common';
+
+import { Router } from '@angular/router';
+import { CategoryType } from '../../types/category';
+import { LevelType } from '../../types/levelType';
 
 @Component({
   selector: 'app-workshop-all',
   standalone: true,
-  imports: [LoaderComponent, RouterLink, SlicePipe, DatePipe],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule
+  ],
   templateUrl: './workshop-all.component.html',
   styleUrl: './workshop-all.component.css'
 })
-export class WorkshopAllComponent {
-  // workshops: Workshop[] = [];
-  // isLoading = true;
+export class WorkshopAllComponent implements OnInit {
+  searchForm: FormGroup;
+  workshops: Workshop[] = [];
+  filteredWorkshops: Workshop[] = [];
+  workshopMentor: string[] = [];
+  // workshopModels: string[] = [];
+  selectedMentor: string = '';
+  categoryTypes = Object.values(CategoryType);
+  levelTypes = Object.values(LevelType);
 
-  constructor(private apiService: ApiService) { }
+  constructor(private fb: FormBuilder, private workshopService: WorkshopService, private router: Router) {
+    this.searchForm = this.fb.group({
+      mentor: [''],
+      categoryType: [''],
+      levelType: ['']
+    });
+    this.loadWorkshops();
+  }
 
-  // ngOnInit() {
-  // this.apiService.getWorkshops().subscribe((workshops) => {
-  // this.workshops = workshops;
-  // this.isLoading = false;
-  // });
-  // }
+  ngOnInit(): void {
+    this.workshopService.getAll().subscribe((workshops: Workshop[]) => {
+      this.workshops = workshops;
+      this.filteredWorkshops = workshops;
+    });
+  }
+
+  extractMentors(): void {
+    this.workshopMentor = [...new Set(this.workshops.map(workshop => workshop.userId.username))];
+
+    // this.onBrandChange(this.selectedBrand);
+  }
+
+  loadWorkshops(): void {
+    this.workshopService.getAll().subscribe((workshops) => {
+      this.workshops = workshops;
+      // this.extractMentors();  // Extract brands and models from the workshops list
+    });
+  }
+
+  onMentorChange(mentor: string): void {
+    //   this.selectedMentor = mentor;
+
+    //   if (mentor) {
+    //     const workshopsForMentor = this.workshops
+    //       .filter(workshop => workshop.userId.username === mentor)
+    //       .map(workshop => workshop.model);
+
+    //     this.workshopModels = [...new Set(workshopsForMentor)];
+    //   } else {
+    //     this.workshopModels = [];
+  }
+
+
+
+  onSearch(): void {
+    const { mentor, categoryType, levelType } = this.searchForm.value;
+    this.filteredWorkshops = this.workshops.filter(workshop =>
+      (!mentor || workshop.userId.username.toLowerCase().includes(mentor.toLowerCase())) &&
+      (!categoryType || workshop.categoryType === categoryType) &&
+      (!levelType || workshop.levelType === levelType)
+    );
+  }
+
+  resetFilters(): void {
+    this.searchForm.reset();
+    this.filteredWorkshops = [...this.workshops];
+  }
+
+  viewDetails(id: number) {
+    this.router.navigate(['/workshop-details', id]);
+  }
 }

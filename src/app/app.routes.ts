@@ -10,13 +10,16 @@ import { RegisterComponent } from './user/register/register.component';
 // import { AuthGuard } from './guards/auth.guard';
 // import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
 import { WorkshopAddComponent } from './workshops/workshop-add/workshop-add.component';
-// import { WorkshopAllComponent } from './workshops/workshop-all/workshop-all.component';
+import { WorkshopAllComponent } from './workshops/workshop-all/workshop-all.component';
+import { WorkshopDetailsComponent } from './workshops/workshop-details/workshop-details.component';
 // import { MentorsTeamComponent } from './mentor/mentors-team/mentors-team.component';
 import { MentorDeatailsComponent } from './mentor/mentor-details/mentor-details.component';
+import { AboutComponent } from './about/about.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
+    { path: 'about', component: AboutComponent },
 
     //   Start - User routing
     { path: 'login', component: LoginComponent },
@@ -25,7 +28,8 @@ export const routes: Routes = [
     //   End - User routing
 
     { path: 'add', component: WorkshopAddComponent },
-    // { path: 'workshops', component: WorkshopAllComponent },
+    { path: 'workshops', component: WorkshopAllComponent },
+    { path: 'workshops-details/:id', component: WorkshopDetailsComponent },
     // { path: 'categories', component: WorkshopAllComponent },
     // { path: 'mentors', component: MentorsTeamComponent },
     // Start - Theme routing

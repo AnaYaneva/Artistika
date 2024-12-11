@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 export class NavBarComponent {
 
 
-  constructor(private router: Router, private authService: UserService) {
+  constructor(private router: Router, private userService: UserService) {
   }
 
   goHome(): void {
@@ -23,16 +23,18 @@ export class NavBarComponent {
   }
 
   isAdmin(): boolean {
-    return this.authService.getRole() === 'admin';
+    return this.userService.getRole() === 'admin';
   }
+
 
 
   isLoggedIn(): boolean {
-    return this.authService.isLoggedIn();
+    // return this.authService.isLogged();
+    return this.userService.isLoggedIn();
   }
 
   logout(): void {
-    this.authService.logout();
+    this.userService.logout();
     this.router.navigate(['/login']);
   }
 }

@@ -74,5 +74,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/mentor-details', mentor.id]);
   }
 
-
+  isLoggedIn(): boolean {
+    // return this.authService.isLogged();
+    return this.userService.isLoggedIn();
+  }
 }

@@ -3,131 +3,68 @@
     {
       "id": 3,
       "title": "Artistika Front-End How-To",
-      "userId": {
-        "id": 1
-      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
-      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "video": "https://www.youtube.com/embed/VCJ45dH0aOs",
       "levelType": "Begginer",
       "categoryType": "Acrylic Paint"
     },
     {
-      "id": 4,
-      "title": "json-server",
-      "userId": {
-        "id": 1
-      },
-      "decription": "the best workshop",
-      "img": "assets/images/cat-oil_paint.jpg",
-      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
-      "levelType": "Intermediate",
-      "categoryType": "Soft Pastels"
-    },
-    {
       "id": 1,
       "title": "json-server",
-      "userId": {
-        "id": 1
-      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
-      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "video": "https://www.youtube.com/embed/VCJ45dH0aOs",
       "levelType": "Begginer",
       "categoryType": "Watercolors"
     },
     {
       "id": 2,
       "title": "json-server",
-      "userId": {
-        "id": 1
-      },
       "decription": "the best workshop",
       "img": "assets/images/craft.png",
-      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "video": "https://www.youtube.com/embed/VCJ45dH0aOs",
       "levelType": "Intermediate",
       "categoryType": "Acrylic Paint"
     },
     {
       "id": 5,
       "title": "json-server",
-      "userId": {
-        "id": 5
-      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
-      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "video": "https://www.youtube.com/embed/VCJ45dH0aOs",
       "levelType": "Intermediate",
       "categoryType": "Soft Pastels"
     },
     {
       "id": 6,
       "title": "json-server",
-      "userId": {
-        "id": 4
-      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
-      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "video": "https://www.youtube.com/embed/VCJ45dH0aOs",
       "levelType": "Intermediate",
       "categoryType": "Watercolors"
     },
     {
       "id": 7,
       "title": "json-server",
-      "userId": {
-        "id": 3
-      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
-      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "video": "https://www.youtube.com/embed/VCJ45dH0aOs",
       "levelType": "Begginer",
       "categoryType": "Acrylic Paint"
     },
     {
       "id": 8,
       "title": "json-server",
-      "userId": {
-        "id": 2
-      },
       "decription": "the best workshop",
       "img": "/assets/images/cat-oil_paint.jpg",
-      "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
+      "video": "https://www.youtube.com/embed/VCJ45dH0aOs",
       "levelType": "Intermediate",
       "categoryType": "Oil Paint"
-    },
-    {
-      "title": "asdfx",
-      "description": "saazdefrgthyjukil;'\\?:?lk.,jgnhvfbxcdxfvghjkml",
-      "video": "https://www.youtube.com/watch?v=uhirWWnWxlQ",
-      "categoryType": "Soft Pastels",
-      "levelType": "Intermediate",
-      "img": "https://www.concretepage.com/angular/images/angular-select-option-reactive-form.jpg",
-      "id": 9
     }
   ],
-  "comments": [
-    {
-      "id": 5,
-      "text": "Best workshop i have been to",
-      "userId": {
-        "id": 1
-      },
-      "workshopId": {
-        "id": 1
-      }
-    },
-    {
-      "id": 6,
-      "text": "some comment",
-      "userId": {
-        "id": 1
-      },
-      "workshopId": {
-        "id": 1
-      }
-    }
-  ],
+  "comments": [],
   "users": [
     {
       "username": "admin",

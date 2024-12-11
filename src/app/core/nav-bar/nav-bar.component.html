@@ -3,19 +3,8 @@
     <div class="container-fluid">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <!-- <a class="d-flex align-items-center justify-content-between bg-secondary w-100 text-decoration-none"
-                   data-toggle="collapse" href="#navbar-vertical" style="height: 67px; padding: 0 30px;">
-                    <h5 class="text-primary m-0" th:text="#{navbar_categories}"><i class="fa-solid fa-paintbrush"></i>Categories</h5>
-                    <i class="fa fa-angle-down text-primary"></i>
-                </a> -->
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
                     id="navbar-vertical" style="width: calc(100% - 30px); z-index: 9;">
-                    <!-- <divth:each="c : ${T(com.artcources.artistica.model.enums.WorkshopCategoryEnum).values()}"
-                        class="navbar-nav w-100">
-                        <a th:attr="href=@{'/workshops/categories/' + ${c.name().toLowerCase()}}"
-                            class="nav-item nav-link"
-                            th:text="${#strings.capitalize(c.name().toLowerCase().replace('_',' '))}"></a> 
-                    </div>-->
                 </nav>
             </div>
             <div class="col-lg-9">
@@ -33,47 +22,13 @@
                                 <li class="nav-item"><a routerLink="/home" class="nav-item nav-link">Home</a></li>
                                 <li class="nav-item"><a routerLink="/about" class="nav-item nav-link">About</a></li>
                                 <!-- <li class="nav-item"><a routerLink="/mentors" class="nav-item nav-link">Mentors</a></li> -->
-                                <li class="nav-item"><a routerLink="/workshops" class="nav-item nav-link">Workshops</a>
-                                    <!-- <li class="nav-item"><a routerLink="/categories"
-                                        class="nav-item nav-link">Categories</a>
-                                </li> -->
-                                <li class="nav-item"><a routerLink="/add" class="nav-item nav-link">Add Workshop</a>
-                                </li>
-                                <!-- <li class="nav-item dropdown">
-                                    <div class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Workshops</a>
-                                        <div class="dropdown-menu rounded-0 m-0">
-                                            <a routerLink="/workshops/all" class="dropdown-item">By Category</a>
-                                            <a routerLink="/workshops/search" class="dropdown-item">Search</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item"><a routerLink="/contacts" class="nav-item nav-link">Contact</a>
-                                </li> -->
+                                <li class="nav-item"><a *ngIf="isLoggedIn()" routerLink="/workshops"
+                                        class="nav-item nav-link">Workshops</a>
 
-
-                                <!-- <li sec:authorize="hasRole('MENTOR')" class="nav-item dropdown">
-                                    <div class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Mentor</a>
-                                        <div class="dropdown-menu rounded-0 m-0">
-                                            <a th:text="#{mentor_add_workshop}" th:href="@{/workshops/add}"
-                                                class="dropdown-item"></a>
-                                            <a th:text="#{mentor_profile}" th:href="@{/mentors/profile/myProfile}"
-                                                class="dropdown-item"></a>
-                                        </div>
-                                    </div>
+                                <li class="nav-item"><a routerLink="/add" *ngIf="isAdmin()"
+                                        class="nav-item nav-link">Add Workshop</a>
                                 </li>
-                                <li sec:authorize="hasRole('ADMIN')" class="nav-item dropdown">
-                                    <div class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Admin</a>
-                                        <div class="dropdown-menu rounded-0 m-0">
-                                            <a th:text="#{admin_workshops_approve}" th:href="@{/admin/review-workshops}"
-                                                class="dropdown-item">w</a>
-                                            <a th:text="#{admin_users}" th:href="@{/admin/manage-users}"
-                                                class="dropdown-item">Users</a>
-                                        </div>
-                                    </div>
-                                </li> -->
+
                             </ul>
                         </div>
 

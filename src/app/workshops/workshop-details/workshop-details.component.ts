@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../user/user.service';
 import { User } from '../../types/user';
 import Swal from 'sweetalert2';
+import { BrowserModule, DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { YouTubePlayer, YouTubePlayerModule } from '@angular/youtube-player';
 
 @Component({
   selector: 'app-workshop-details',
@@ -22,18 +24,32 @@ export class WorkshopDetailsComponent implements OnInit {
   currentUser: User = {} as User;
   seller: User = {} as User;
 
+
+  trustedUrL: SafeUrl = '';
+
   constructor(private router: Router,
     private route: ActivatedRoute,
     private workshopService: WorkshopService,
-    private userService: UserService) {
+    private userService: UserService,
+    private sanitizer: DomSanitizer
+  ) {
+
+
   }
 
+
   ngOnInit(): void {
+    // const scriptTag = document.createElement('script');
+    // scriptTag.src = "https://www.youtube.com/iframe_api";
+    // document.body.appendChild(scriptTag);
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.workshopService.get(+id).subscribe({
         next: (workshop) => {
           this.workshop = workshop;
+          if (this.workshop != null) {
+            this.trustedUrL = this.sanitizer.bypassSecurityTrustResourceUrl(this.workshop.video);
+          }
           // this.workshop = workshop;
           // this.userService.getOne(workshop.userId).subscribe((user) => {
           //   this.seller = user;
@@ -48,6 +64,7 @@ export class WorkshopDetailsComponent implements OnInit {
           // });
         },
         error: (err) => {
+          console.error('Error fetching workshop details:', err);
           console.error('Error fetching workshop details:', err);
           this.workshop = null;
         },

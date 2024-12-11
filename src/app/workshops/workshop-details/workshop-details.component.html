@@ -9,8 +9,9 @@
                 <!-- <li><strong>Mentor:</strong> {{ workshop.userId.username }}</li> -->
                 <li><strong>Category:</strong> {{ workshop.categoryType }}</li>
                 <li><strong>Level of experience:</strong> {{ workshop.levelType }}</li>
-                <iframe width="560" height="315" [src]="workshop.video" frameborder="0" allowfullscreen></iframe>
             </ul>
+            <!-- <youtube-player videoId="IzStv5FaJWA" placeholderImageQuality="standard"></youtube-player> -->
+            <iframe width="560" height="315" [src]="trustedUrL" frameborder="0" allowfullscreen></iframe>
             <!-- <button class="btn-book-now" (click)="onBookNow(workshop.id)">Rent Now</button> -->
             <!-- <a *ngIf="isOwner()" class="button" routerLink="/workshop-edit/{{ workshop.id }}">Edit</a>
             <a (click)="deleteItem(item.id)" *ngIf="isOwner()" class="button">Delete</a> -->

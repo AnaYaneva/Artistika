@@ -7,15 +7,16 @@ import { RegisterComponent } from './user/register/register.component';
 // import { AddThemeComponent } from './theme/add-theme/add-theme.component';
 // import { MainComponent } from './main/main.component';
 // import { CurrentThemeComponent } from './theme/current-theme/current-theme.component';
-// import { AuthGuard } from './guards/auth.guard';
-// import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
+import { AuthGuard } from './guards/auth.guard';
 import { WorkshopAddComponent } from './workshops/workshop-add/workshop-add.component';
 import { WorkshopAllComponent } from './workshops/workshop-all/workshop-all.component';
 import { WorkshopDetailsComponent } from './workshops/workshop-details/workshop-details.component';
 // import { MentorsTeamComponent } from './mentor/mentors-team/mentors-team.component';
 import { MentorDeatailsComponent } from './mentor/mentor-details/mentor-details.component';
 import { AboutComponent } from './about/about.component';
-import { ErrorComponent } from './error/error.component';
+import { ErrorMsgComponent } from './error-msg/error-msg.component';
+import { PageNotFoundComponent } from './error/error.component';
+import { AdminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,13 +26,12 @@ export const routes: Routes = [
     //   Start - User routing
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'profile', component: MentorDeatailsComponent },
+    { path: 'profile', component: MentorDeatailsComponent, canActivate: [AuthGuard] },
     //   End - User routing
 
-    { path: 'add', component: WorkshopAddComponent },
+    { path: 'add', component: WorkshopAddComponent, canActivate: [AdminGuard] },
     { path: 'workshops', component: WorkshopAllComponent },
-    { path: 'workshops-details/:id', component: WorkshopDetailsComponent },
-    // { path: 'categories', component: WorkshopAllComponent },
+    { path: 'workshop-details/:id', component: WorkshopDetailsComponent },
     // { path: 'mentors', component: MentorsTeamComponent },
     // Start - Theme routing
     // {
@@ -56,7 +56,7 @@ export const routes: Routes = [
     // },
     // End - Theme routing
 
-    // { path: 'error', component: ErrorMsgComponent },
-    // { path: '404', component: PageNotFoundComponent },
-    // { path: '**', redirectTo: '/404' },
+    { path: 'error', component: ErrorMsgComponent },
+    { path: '404', component: PageNotFoundComponent },
+    { path: '**', redirectTo: '/404' },
 ];

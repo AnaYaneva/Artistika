@@ -21,10 +21,10 @@ import { emailValidator } from '../utils/email.validator';
 export class EmailDirective implements Validator {
   @Input() appEmail: string[] = [];
 
-  constructor() {}
+  constructor() { }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    const validatorFn = emailValidator(this.appEmail);
+    const validatorFn = emailValidator();
     return validatorFn(control);
   }
 }

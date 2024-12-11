@@ -11,6 +11,8 @@ import { Constant } from './../constants';
 export class UserService {
   apiUrl = Constant.URL_BASE;
   userUrl = Constant.URL_BASE + '/users';
+  user: User | null = null;
+
   private currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   public currentUser: Observable<User | null> = this.currentUserSubject.asObservable();
 
@@ -20,6 +22,10 @@ export class UserService {
       const decodedToken = this.jwtHelper.decodeToken(token);
       this.currentUserSubject.next(decodedToken); // Set the user data from the JWT token
     }
+  }
+
+  get isLogged(): boolean {
+    return !!this.user;
   }
 
   register(username: string, email: string, password: string, role: 'admin' | 'user'): Observable<User> {
@@ -93,15 +99,15 @@ export class UserService {
       .pipe(tap((user) => this.currentUserSubject.next(user)));
   }
 
-  //   updateProfile(username: string, email: string, tel?: string) {
-  //     return this.http
-  //       .put<UserForAuth>(`/users`, {
-  //         username,
-  //         email,
-  //         tel,
-  //       })
-  //       .pipe(tap((user) => this.currentUserSubject.next(user)));
-  //   }
+  updateProfile(username: string, email: string, tel?: string) {
+    return this.http
+      .put<User>(`/users`, {
+        username,
+        email,
+        tel,
+      })
+      .pipe(tap((user) => this.currentUserSubject.next(user)));
+  }
 
   // getRole(): string | null {
   //   return this.currentUserSubject.value?.role || null;

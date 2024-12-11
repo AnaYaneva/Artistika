@@ -9,7 +9,8 @@ export interface User {
 }
 
 export interface ProfileDetails {
-  id: number;
+  // id: number;
   email: string;
   username: string;
+  img: string;
 }

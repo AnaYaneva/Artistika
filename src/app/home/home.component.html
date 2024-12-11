@@ -46,7 +46,8 @@
                     <h3>{{ workshop.title }}</h3>
                     <p>Category: {{ workshop.categoryType }}</p>
                     <p>Category: {{ workshop.levelType }}</p>
-                    <button (click)="viewWorkshop(workshop)" class="rent-button">View Now</button>
+                    <button *ngIf="isLoggedIn()" (click)="viewWorkshop(workshop)" class="rent-button">View Now</button>
+                    <button *ngIf="!isLoggedIn()" routerLink="/login" class="rent-button">View Now</button>
                 </div>
             </div>
         </div>

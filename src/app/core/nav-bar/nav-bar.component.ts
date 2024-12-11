@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterLink,
     CommonModule,
-    RouterLinkActive],
+  ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
@@ -36,5 +36,14 @@ export class NavBarComponent {
   logout(): void {
     this.userService.logout();
     this.router.navigate(['/login']);
+  }
+
+  navigateToProfilePage() {
+    let idFromJwt: number | null = this.userService.getCurrentUserIdFromJwt();
+    if (idFromJwt) {
+      this.router.navigate(['/profile', idFromJwt]);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }

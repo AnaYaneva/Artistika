@@ -1,102 +1,58 @@
-<!-- <section class="workshop-details fancy" *ngIf="workshop">
-    <div class="workshop-details-container">
-        <div class="workshop-image">
-            <img [src]="workshop.img" [alt]="workshop.title" />
-        </div>
-        <div class="workshop-info">
-            <h2>{{ workshop.title }}</h2>
-            <ul class="workshop-specs">
-                <li><strong>Category:</strong> {{ workshop.categoryType }}</li>
-                <li><strong>Level of experience:</strong> {{ workshop.levelType }}</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section *ngIf="!workshop" class="error-message">
-    <p>Workshop details not available. Please try again later.</p>
-</section> -->
-
-<!-- homepage -->
-<div class="container">
-    <div class="profile">
-        <img src="./profile.png" alt="default user" />
-        <h3>User Info:</h3>
-
-        <!-- READONLY MODE -->
-
-        @if(!isEditMode){
-        <ng-container>
-            <div class="flex">
-                <p>Username:</p>
-                <p>{{ profileDetails.username }}</p>
-            </div>
-            <div class="flex">
-                <p>Email:</p>
-                <p>{{ profileDetails.email }}</p>
-            </div>
-            <div class="flex">
-                <p>Phone:</p>
-                <p>{{ profileDetails.img }}</p>
-            </div>
-            <button class="edit-button" (click)="toggleEditMode()">Edit</button>
-        </ng-container>
-        } @else {
-        <!-- EDIT MODE -->
-        <ng-container>
-            <form [formGroup]="form" (ngSubmit)="handleSaveProfile()">
-                <div class="flex">
-                    <p>Username:</p>
-                    <input type="text" name="username" id="username" value="Johny" formControlName="username" />
+<h1>works</h1>
+<div class="bg-light-brown" style="padding: 20px 0">
+    <div id="login-form-wrap">
+        <h2>Edit '{{ user.username }}' profile</h2>
+        <form (ngSubmit)="onSubmit()" id="login-form" method="post">
+            <p>
+                <input formControlName="username" id="username" name="username" placeholder="Username" type="text"
+                    value='{{ user.username }}' />
+            </p>
+            <span *ngIf="profileForm.get('username')?.touched">
+                <div *ngIf="profileForm.get('username')?.errors?.['required']" style="color: #de2d2d">
+                    Username is required!
                 </div>
-                @if(form.get('username')?.touched){
-                <div>
-                    @if(form.get('username')?.errors?.['required']){
-                    <p class="error">Username is required!</p>
-                    }
-                    <!--  -->
-                    @if(form.get('username')?.errors?.['minlength']){
-                    <p class="error">Username must be at least 5 characters!</p>
-                    }
-                </div>
-                }
-
-                <div class="flex">
-                    <p>Email:</p>
-                    <input type="email" name="email" id="email" value="john.doe@gmail.com" formControlName="email" />
-                </div>
-
-                @if(form.get('email')?.touched){
-                <div>
-                    @if(form.get('email')?.errors?.['required']){
-                    <p class="error">Email is required!</p>
-                    }
-                    <!--  -->
-                    @if(form.get('email')?.errors?.['emailValidator']){
-                    <p class="error">Email is not valid!</p>
-                    }
-                </div>
-                }
-
-                <div class="flex">
-                    <p>Phone:</p>
-                    <div>
-                        <select name="select-tel" id="select-tel" class="tel">
-                            <option value="00359">+359</option>
-                        </select>
-                        <input type="text" name="img" id="img" value="885 888 888" formControlName="img" />
+            </span>
+            <p>
+                <input formControlName="email" id="email" name="email" placeholder="Email Address" type="email"
+                    value='{{ user.email }}' />
+                <span *ngIf="profileForm.get('email')?.touched">
+                    <div *ngIf="profileForm.get('email')?.errors?.['required']" style="color: #de2d2d">
+                        Email is required!
                     </div>
-                </div>
-
-                <div class="btn-wrapper">
-                    <button class="red-button" (click)="onCancel($event)">Cancel</button>
-                    <button class="green-button" [disabled]="form.invalid"
-                        [style]="{ backgroundColor: form.invalid ? 'grey' : '#5cb85c' }">
-                        Save
-                    </button>
-                </div>
-            </form>
-        </ng-container>
-        }
+                    <div *ngIf="profileForm.get('email')?.errors?.['email']" style="color: #de2d2d">
+                        Email is invalid!
+                    </div>
+                </span>
+            </p>
+            <p>
+                <input formControlName="img" id="img" name="img" placeholder="Image" type="text"
+                    value='{{ user.img }}' />
+                <span *ngIf="profileForm.get('img')?.touched">
+                    <div *ngIf="profileForm.get('img')?.errors?.['required']" style="color: #de2d2d">
+                        Picture is required!
+                    </div>
+                </span>
+            </p>
+            <div *ngIf="user.img" class="image-preview">
+                <p>Image Preview:</p>
+                <img [src]="user.img" alt="Workshop Image Preview" />
+            </div>
+            <p>
+                <input [style]="{ backgroundColor: profileForm.invalid ? 'grey' : '' }" [disabled]="profileForm.invalid"
+                    id="register" type="submit" value="Edit profile" />
+            </p>
+        </form>
+        <div id="create-account-wrap">
+            <p>
+                Want to change password?
+                <a routerLink="/change-password/{{ user.id }}">Change password here</a>
+            </p>
+            <p></p>
+            <p>
+                Want to delete your profile?
+                <a (click)="deleteProfile(user.id)" style="cursor: pointer; color: red">Delete from here</a>
+            </p>
+            <p></p>
+        </div>
     </div>
 </div>

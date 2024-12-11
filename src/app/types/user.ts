@@ -14,3 +14,9 @@ export interface ProfileDetails {
   username: string;
   img: string;
 }
+
+export interface UserUpdate {
+  email: string;
+  username: string;
+  img: string;
+}

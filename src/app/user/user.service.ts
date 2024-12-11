@@ -1,9 +1,10 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { User } from '../types/user';
+import { User, UserUpdate } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap, catchError, map, Observable, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Constant } from './../constants';
+import { jwtDecode } from "jwt-decode"
 
 @Injectable({
   providedIn: 'root',
@@ -115,4 +116,50 @@ export class UserService {
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(`${this.userUrl}`);
   }
+
+  delete(id: number) {
+    return this.http.delete(`${this.userUrl}/${id}?_dependent=furniture`);
+  }
+
+  getOne(id: number): Observable<User> {
+    return this.http.get<User>(`${this.userUrl}/${id}`);
+  }
+
+  update(
+    id: number,
+    user: UserUpdate,
+  ): Observable<User> {
+    return this.http.patch<User>(`${this.userUrl}/${id}`, user);
+  }
+
+  removeJwtToken(): void {
+    localStorage.clear()
+  }
+
+  getCurrentUserIdFromJwt(): number | null {
+    let id: number | undefined = this.currentUserSubject.value?.id;
+    if (id !== undefined) {
+      return id;
+    }
+
+    // let jwtToken: string | null = this.getJwtToken();
+
+    // if (jwtToken !== null) {
+    //   const { sub } = this.getDecodedAccessToken(jwtToken);
+    //   return Number(sub);
+    // }
+    return null;
+  }
+
+  // getJwtToken(): string | null {
+  //   return localStorage.getItem(Constant.LS_JWT_NAME);
+  // }
+
+  // getDecodedAccessToken(token: string): any {
+  //   try {
+  //     return jwtDecode(token);
+  //   } catch (Error) {
+  //     return null;
+  //   }
+  // }
 }

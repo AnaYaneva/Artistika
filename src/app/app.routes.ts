@@ -15,6 +15,7 @@ import { WorkshopDetailsComponent } from './workshops/workshop-details/workshop-
 // import { MentorsTeamComponent } from './mentor/mentors-team/mentors-team.component';
 import { MentorDeatailsComponent } from './mentor/mentor-details/mentor-details.component';
 import { AboutComponent } from './about/about.component';
+import { ErrorComponent } from './error/error.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },

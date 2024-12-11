@@ -6,12 +6,18 @@
         <div class="workshop-info">
             <h2>{{ workshop.title }}</h2>
             <ul class="workshop-specs">
-                <li><strong>Mentor:</strong> {{ workshop.userId.username }}</li>
+                <!-- <li><strong>Mentor:</strong> {{ workshop.userId.username }}</li> -->
                 <li><strong>Category:</strong> {{ workshop.categoryType }}</li>
                 <li><strong>Level of experience:</strong> {{ workshop.levelType }}</li>
                 <iframe width="560" height="315" [src]="workshop.video" frameborder="0" allowfullscreen></iframe>
             </ul>
-            <button class="btn-book-now" (click)="onBookNow(workshop.id)">Rent Now</button>
+            <!-- <button class="btn-book-now" (click)="onBookNow(workshop.id)">Rent Now</button> -->
+            <!-- <a *ngIf="isOwner()" class="button" routerLink="/workshop-edit/{{ workshop.id }}">Edit</a>
+            <a (click)="deleteItem(item.id)" *ngIf="isOwner()" class="button">Delete</a> -->
+            <!-- <a (click)="likeItem(item.id)" *ngIf="isLoggedIn() && !isOwner() && !isUserAlreadyLiked" class="button">Save
+                <span style="color: #af0606"><i class="fa-solid fa-heart"></i></span></a>
+            <a (click)="removeLikeItem(item.id)" *ngIf="!isOwner() && isUserAlreadyLiked" class="button">Remove
+                <span style="color: #af0606"><i class="fa-solid fa-heart"></i></span></a> -->
         </div>
     </div>
 </section>

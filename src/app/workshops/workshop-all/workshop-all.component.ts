@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CategoryType } from '../../types/category';
 import { LevelType } from '../../types/levelType';
+import { User } from '../../types/user';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-workshop-all',
@@ -23,13 +25,17 @@ export class WorkshopAllComponent implements OnInit {
   searchForm: FormGroup;
   workshops: Workshop[] = [];
   filteredWorkshops: Workshop[] = [];
-  workshopMentor: string[] = [];
+  workshopMentors: User[] = [];
   // workshopModels: string[] = [];
   selectedMentor: string = '';
   categoryTypes = Object.values(CategoryType);
   levelTypes = Object.values(LevelType);
+  currentUser: User = {} as User;
+  seller: User = {} as User;
+  isUserAlreadyLiked: boolean = false;
 
-  constructor(private fb: FormBuilder, private workshopService: WorkshopService, private router: Router) {
+
+  constructor(private fb: FormBuilder, private workshopService: WorkshopService, private router: Router, private userService: UserService) {
     this.searchForm = this.fb.group({
       mentor: [''],
       categoryType: [''],
@@ -42,14 +48,16 @@ export class WorkshopAllComponent implements OnInit {
     this.workshopService.getAll().subscribe((workshops: Workshop[]) => {
       this.workshops = workshops;
       this.filteredWorkshops = workshops;
+
     });
   }
 
-  extractMentors(): void {
-    this.workshopMentor = [...new Set(this.workshops.map(workshop => workshop.userId.username))];
+  // extractMentors(): void {
+  //   this.workshopMentors = [...new Set(this.workshops.map(workshop =>
+  //     this.userService.getOne(workshop.userId).subscribe((user) )))];
 
-    // this.onBrandChange(this.selectedBrand);
-  }
+  //   this.onMentorChange(this.selectedMentor);
+  // }
 
   loadWorkshops(): void {
     this.workshopService.getAll().subscribe((workshops) => {
@@ -58,25 +66,25 @@ export class WorkshopAllComponent implements OnInit {
     });
   }
 
-  onMentorChange(mentor: string): void {
-    //   this.selectedMentor = mentor;
+  // onMentorChange(mentor: string): void {
+  //   //   this.selectedMentor = mentor;
 
-    //   if (mentor) {
-    //     const workshopsForMentor = this.workshops
-    //       .filter(workshop => workshop.userId.username === mentor)
-    //       .map(workshop => workshop.model);
+  //   //   if (mentor) {
+  //   //     const workshopsForMentor = this.workshops
+  //   //       .filter(workshop => workshop.userId.username === mentor)
+  //   //       .map(workshop => workshop.model);
 
-    //     this.workshopModels = [...new Set(workshopsForMentor)];
-    //   } else {
-    //     this.workshopModels = [];
-  }
+  //   //     this.workshopModels = [...new Set(workshopsForMentor)];
+  //   //   } else {
+  //   //     this.workshopModels = [];
+  // }
 
 
 
   onSearch(): void {
     const { mentor, categoryType, levelType } = this.searchForm.value;
     this.filteredWorkshops = this.workshops.filter(workshop =>
-      (!mentor || workshop.userId.username.toLowerCase().includes(mentor.toLowerCase())) &&
+      // (!mentor || workshop.userId.username.toLowerCase().includes(mentor.toLowerCase())) &&
       (!categoryType || workshop.categoryType === categoryType) &&
       (!levelType || workshop.levelType === levelType)
     );

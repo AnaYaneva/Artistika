@@ -1,5 +1,6 @@
 export enum CategoryType {
   Watercolors = 'Watercolors',
-  Acrilyc = 'Acrilyc',
-  SoftPastels = 'SoftPastels',
+  Acrilyc = 'Acrylic Paint',
+  SoftPastels = 'Soft Pastels',
+  OilPaints = 'Oil Paint',
 }

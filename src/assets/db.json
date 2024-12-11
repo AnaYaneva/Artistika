@@ -3,27 +3,33 @@
     {
       "id": 3,
       "title": "Artistika Front-End How-To",
-      "userId": "2",
+      "userId": {
+        "id": 1
+      },
       "decription": "the best workshop",
-      "img": "../assets/images/cat-oil_paint.jpg",
+      "img": "assets/images/cat-oil_paint.jpg",
       "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
       "levelType": "Begginer",
-      "categoryType": "Watercolors"
+      "categoryType": "Acrylic Paint"
     },
     {
       "id": 4,
       "title": "json-server",
-      "userId": "2",
+      "userId": {
+        "id": 1
+      },
       "decription": "the best workshop",
-      "img": "../../assets/images/cat-oil_paint.jpg",
+      "img": "assets/images/cat-oil_paint.jpg",
       "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
-      "levelType": "Begginer",
-      "categoryType": "Watercolors"
+      "levelType": "Intermediate",
+      "categoryType": "Soft Pastels"
     },
     {
       "id": 1,
       "title": "json-server",
-      "userId": "2",
+      "userId": {
+        "id": 1
+      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
       "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
@@ -33,52 +39,62 @@
     {
       "id": 2,
       "title": "json-server",
-      "userId": "2",
+      "userId": {
+        "id": 1
+      },
       "decription": "the best workshop",
-      "img": "assets/images/cat-oil_paint.jpg",
+      "img": "assets/images/craft.png",
       "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
-      "levelType": "Begginer",
-      "categoryType": "Watercolors"
+      "levelType": "Intermediate",
+      "categoryType": "Acrylic Paint"
     },
     {
       "id": 5,
       "title": "json-server",
-      "userId": "2",
+      "userId": {
+        "id": 5
+      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
       "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
-      "levelType": "Begginer",
-      "categoryType": "Watercolors"
+      "levelType": "Intermediate",
+      "categoryType": "Soft Pastels"
     },
     {
       "id": 6,
       "title": "json-server",
-      "userId": "2",
+      "userId": {
+        "id": 4
+      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
       "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
-      "levelType": "Begginer",
+      "levelType": "Intermediate",
       "categoryType": "Watercolors"
     },
     {
       "id": 7,
       "title": "json-server",
-      "userId": "2",
+      "userId": {
+        "id": 3
+      },
       "decription": "the best workshop",
       "img": "assets/images/cat-oil_paint.jpg",
       "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
       "levelType": "Begginer",
-      "categoryType": "Watercolors"
+      "categoryType": "Acrylic Paint"
     },
     {
       "id": 8,
       "title": "json-server",
-      "userId": "2",
+      "userId": {
+        "id": 2
+      },
       "decription": "the best workshop",
-      "img": "assets/images/cat-oil_paint.jpg",
+      "img": "/assets/images/cat-oil_paint.jpg",
       "video": "https://www.youtube.com/watch?v=Zdf5ZZyXATs",
-      "levelType": "Begginer",
-      "categoryType": "Watercolors"
+      "levelType": "Intermediate",
+      "categoryType": "Oil Paint"
     }
   ],
   "comments": [

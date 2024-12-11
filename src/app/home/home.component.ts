@@ -25,16 +25,16 @@ export class HomeComponent implements OnInit {
   featuredMentors: User[] = [];
   testimonials = [
     {
-      message: 'This workshop rental service made my trip unforgettable! Highly recommend.',
-      name: 'John Doe'
+      message: 'I started as a complete beginner, and the courses on [Your Website Name] have transformed my skills. The step-by-step instructions and supportive community have been invaluable. Highly recommended!',
+      name: 'Jane D., Beginner Artist'
     },
     {
-      message: 'Amazing experience. The workshop was in perfect condition and the service was top-notch.',
-      name: 'Jane Smith'
+      message: 'The advanced techniques and professional tips I learned here have really boosted my confidence. The instructors are top-notch and the feedback on my work has been incredibly helpful.',
+      name: 'Michael S., Aspiring Professional '
     },
     {
-      message: 'I will definitely use this service again. Excellent customer support.',
-      name: 'Emily Johnson'
+      message: 'I love the flexibility of being able to learn at my own pace. The variety of courses available means theres always something new to try.This site has reignited my passion for art!',
+      name: 'Lisa R., Hobbyist '
     }
   ];
 

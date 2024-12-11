@@ -2,7 +2,7 @@
 <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
     <div class="container py-5">
         <div class="row align-items-center">
-            <div class="col-lg-7 mb-5 mb-lg-0">
+            <!-- <div class="col-lg-7 mb-5 mb-lg-0">
                 <div class="mb-4">
                     <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Need Any Courses</h5>
                     <h1 class="text-gray">Lorem Ipsum</h1>
@@ -16,7 +16,7 @@
                     <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
                     <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
                 </ul>
-            </div>
+            </div> -->
             <div class="col-lg-5">
                 <div class="card border-0">
                     <div class="card-header bg-light text-center p-4">
@@ -42,32 +42,6 @@
 
                             </div>
 
-
-                            <!-- <div class="form-group">
-                                <p class="field field-icon">
-                                    <label for="firstName">
-                                        <span><i class="fas fa-user "></i></span>
-                                    </label>
-                                    <input class="form-control border-0 p-4" [class]="isFieldTextMissing('firstName') || isNotMinLength('firstName')
-                                                                              ? 'input-error '
-                                                                              : ''
-                                                                          " type="text" name="firstName" id="firstName"
-                                        placeholder="First name" formControlName="firstName" />
-                                </p>
-
-                                @if(form.get('firstName')?.touched){
-                                <div>
-                                    @if(form.get('firstName')?.errors?.['required']){
-                                    <p class="error is-invalid ">First name is required!</p>
-                                    }
-                              
-                                    @if(form.get('firstName')?.errors?.['minlength']){
-                                    <p class="error is-invalid">First name must be at least 3 characters!</p>
-                                    }
-                                </div>
-                                }
-
-                            </div> -->
                             <!-- Email -->
                             <div class="form-group">
                                 <label for="email"><span><i class="fas fa-envelope"></i></span></label>
@@ -111,156 +85,6 @@
                                 [class.loading]="isLoading">
                                 {{ isLoading ? 'Registering...' : 'Register' }}
                             </button>
-
-
-                            <!-- username
-                            <div class="form-group">
-                                <p class="field field-icon">
-                                   <label for="lastName">
-                                            <span><i class="fas fa-user "></i></span>
-                                        </label> 
-                                    <input class="form-control border-0 p-4" [class]="isFieldTextMissing('lastName') || isNotMinLength('lastName')
-                                                                                                          ? 'input-error '
-                                                                                                          : ''
-                                                                                                      " type="text"
-                                        name="lastName" id="lastName" placeholder="Last name"
-                                        formControlName="lastName" />
-                                </p>
-
-                                @if(form.get('lastName')?.touched){
-                                <div>
-                                    @if(form.get('lastName')?.errors?.['required']){
-                                    <p class="error is-invalid ">Last name is required!</p>
-                                    }
-                               
-                                    @if(form.get('lastName')?.errors?.['minlength']){
-                                    <p class="error is-invalid">Last name must be at least 3 characters!</p>
-                                    }
-                                </div>
-                                }
-
-                            </div>
-
-
-                      
-                            <div class="form-group">
-                                <p class="field field-icon ">
-                                    <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                                    <input class="form-control border-0 p-4" [class]="
-                                                            isFieldTextMissing('email') || isEmailNotValid ? 
-                                                            'input-error' : ''
-                                                          " type="email" name="email" id="email"
-                                        placeholder="Your email" formControlName="email" />
-                                </p>
-
-                                @if(form.get('email')?.touched){
-                                <div>
-                                    @if(form.get('email')?.errors?.['required']){
-                                    <p class="error is-invalid">Email is required!</p>
-                                    }
-                                 
-                                    @if(form.get('email')?.errors?.['emailValidator']){
-                                    <p class="error is-invalid">Email is not valid!</p>
-                                    }
-                                </div>
-                                }
-                            </div>
-
-                            <div formGroupName="passGroup">
-                           
-                                <div class="form-group">
-                                    <p class="field field-icon">
-                                        <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                                        <input class="form-control border-0 p-4" [class]="(
-                                                                                      (passGroup?.get('password')?.touched &&
-                                                                                       passGroup?.get('password')?.errors?.['required'] ) ||
-                                                                                       (passGroup?.get('password')?.touched && 
-                                                                                       passGroup?.get('password')?.errors?.['minlength'])
-                                                                                    ) ? 'input-error' : ''"
-                                            type="password" name="password" id="password" placeholder="******"
-                                            formControlName="password" />
-                                    </p>
-
-                                    @if(passGroup?.get('password')?.touched){
-                                    <div>
-                                        @if(passGroup?.get('password')?.errors?.['required']){
-                                        <p class="error is-invalid">Password is required!</p>
-                                        }
-                                   
-                                        @if(passGroup?.get('password')?.errors?.['minlength']){
-                                        <p class="error  is-invalid">Password must be at least 5 characters!</p>
-                                        }
-                                    </div>
-                                    }
-                                </div>
-
-                            
-                                <div class="form-group">
-                                    <p class="field field-icon">
-                                       
-                                        <input class="form-control border-0 p-4" [class]="(
-                                                                                      (passGroup?.get('rePassword')?.touched &&
-                                                                                      (passGroup?.get('rePassword')?.errors?.['required'] ||
-                                                                                      passGroup?.errors?.['matchPasswordsValidator'])) 
-                                                                                    ) ? 'input-error' : ''"
-                                            type="password" name="rePassword" id="rePassword" placeholder="******"
-                                            formControlName="rePassword" />
-                                    </p>
-
-                                    @if(passGroup?.get('rePassword')?.touched){
-                                    <div>
-                                        @if(passGroup?.errors?.['matchPasswordsValidator'] ||
-                                        passGroup?.get('rePassword')?.errors?.['required']){
-                                        <p class="error  is-invalid">Repeat Password does not match password!</p>
-                                        }
-                                    </div>
-                                    }
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label>Photo</label><br>
-                               
-                                <input class="form-control border-0 p-4" id="photo" placeholder="Your facebook account"
-                                    formControlName="photo" />
-                            </div>
-                         
-                            <div class="form-group">
-                                <p class="field field-icon ">
-                                    <label for="facebook"><span><i class="fa-brands fa-facebook"></i></span></label>
-                                    <input class="form-control border-0 p-4" id="facebook"
-                                        placeholder="Your facebook account" formControlName="facebook" />
-                                </p>
-
-
-                            </div>
-
-              
-                            <div class="form-group">
-                                <p class="field field-icon ">
-                                    <label for="instagram"><span><i class="fa-brands fa-instagram"></i></span></label>
-                                    <input class="form-control border-0 p-4" id="instagram"
-                                        placeholder="Your instagram account" formControlName="instagram" />
-                                </p>
-
-                            </div>
-
-                            <div class="form-group">
-                                <p class="field field-icon ">
-                                    <label for="linkedIn"><span><i class="fa-brands fa-linkedin"></i></span></label>
-                                    <input class="form-control border-0 p-4" id="linkedIn"
-                                        placeholder="Your LinkedIn account" formControlName="linkedIn" />
-                                </p>
-
-
-                            </div> 
-
-                            <a routerLink="/login" class="btn btn-dark btn-block border-0 py-3"
-                                [style]="{ backgroundColor: form.invalid ? 'grey' : '' }">
-                                Sign Up
-                                Now
-                            </a>-->
 
                             <p class="text-center">
                                 Have an account?

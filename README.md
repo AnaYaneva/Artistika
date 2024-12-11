@@ -4,7 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run ng serve for a dev server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
+
+## Backend server
+For a backend, json-server its used, to run it and get all the features for the app, navigate to "assets" folder and run node server.js.
+
 
 ## Code scaffolding
 
@@ -25,3 +29,50 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+
+# Artistika Angular Project
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+
+Credentials for admin account:
+username: admin
+password: 123456
+
+Credentials for user account:
+username: user
+password: user123
+
+
+
+Home page with list of the available workshops for watching, coming from service, which is taking the information from the json-server and testimonials part which currently is read-only.
+![img.png](images/home1.png)
+![img.png](images/home2.png)
+![img.png](images/home3.png)
+
+About page
+![img.png](images/about.png)
+
+Add workshop
+![img.png](images/add-workshop.jpg)
+
+Workshops list -edit/delete
+![img.png](images/wokrshops-list.jpg)
+
+workshop edit
+![img.png](images/workshop-edit.jpg)
+
+Edit or remove profile.
+![img.png](images/profile.jpg)
+
+Login page, using JWT token for authentication. Token is deleted after logout or an hour inactivity as well. After successful login, automatically redirects you to the Home page.
+![img.png](images/login.jpg)
+
+Register page
+![img.png](images/home1.jpg)
+
+Error page , if you navigate to a non-existing path.
+![img.png](images/error.jpg)
+

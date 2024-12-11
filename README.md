@@ -49,30 +49,33 @@ password: user123
 
 Home page with list of the available workshops for watching, coming from service, which is taking the information from the json-server and testimonials part which currently is read-only.
 ![img.png](images/home1.png)
-![img.png](images/home2.png)
-![img.png](images/home3.png)
+![img.jpg](images/home2.jpg)
+![img.jpg](images/home3.jpg)
 
 About page
-![img.png](images/about.png)
+![img.jpg](images/about.png)
+
+ workshops
+![img.jpg](images/workshops.jpg)
 
 Add workshop
-![img.png](images/add-workshop.jpg)
+![img.png](images/add-workshop.png)
 
 Workshops list -edit/delete
-![img.png](images/wokrshops-list.jpg)
+![img.jpg](images/wokrshops-list.jpg)
 
 workshop edit
-![img.png](images/workshop-edit.jpg)
+![img.jpg](images/workshop-edit.jpg)
 
 Edit or remove profile.
-![img.png](images/profile.jpg)
+![img.jpg](images/profile.jpg)
 
 Login page, using JWT token for authentication. Token is deleted after logout or an hour inactivity as well. After successful login, automatically redirects you to the Home page.
-![img.png](images/login.jpg)
+![img.png](images/login.png)
 
 Register page
-![img.png](images/home1.jpg)
+![img.png](images/register.png)
 
 Error page , if you navigate to a non-existing path.
-![img.png](images/error.jpg)
+![img.png](images/error.png)
 

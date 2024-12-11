@@ -61,7 +61,7 @@ About page
 Add workshop
 ![img.png](images/add-workshop.png)
 
-Workshops list -edit/delete
+Workshops list -edit and delete
 ![img.jpg](images/wokrshops-list.jpg)
 
 workshop edit

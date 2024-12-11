@@ -1,10 +1,10 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { User, UserUpdate } from '../types/user';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, tap, catchError, map, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, tap, catchError, map, Observable, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Constant } from './../constants';
-import { jwtDecode } from "jwt-decode"
+
 
 @Injectable({
   providedIn: 'root',
@@ -110,9 +110,6 @@ export class UserService {
       .pipe(tap((user) => this.currentUserSubject.next(user)));
   }
 
-  // getRole(): string | null {
-  //   return this.currentUserSubject.value?.role || null;
-  // }
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(`${this.userUrl}`);
   }
@@ -141,25 +138,7 @@ export class UserService {
     if (id !== undefined) {
       return id;
     }
-
-    // let jwtToken: string | null = this.getJwtToken();
-
-    // if (jwtToken !== null) {
-    //   const { sub } = this.getDecodedAccessToken(jwtToken);
-    //   return Number(sub);
-    // }
     return null;
   }
 
-  // getJwtToken(): string | null {
-  //   return localStorage.getItem(Constant.LS_JWT_NAME);
-  // }
-
-  // getDecodedAccessToken(token: string): any {
-  //   try {
-  //     return jwtDecode(token);
-  //   } catch (Error) {
-  //     return null;
-  //   }
-  // }
 }

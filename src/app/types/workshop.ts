@@ -4,8 +4,6 @@ import { LevelType } from './levelType';
 import { CategoryType } from './category';
 
 export interface CreateWorkshop {
-  //  subscribers: string[];
-  // comments: Comment[];
   title: string;
   userId: User;
   description: string;

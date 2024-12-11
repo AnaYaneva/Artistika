@@ -62,7 +62,7 @@ Add workshop
 ![img.png](images/add-workshop.png)
 
 Workshops list -edit and delete
-![img.jpg](images/wokrshops-list.jpg)
+![img.jpg](images/workshops-list.jpg)
 
 workshop edit
 ![img.jpg](images/workshop-edit.jpg)

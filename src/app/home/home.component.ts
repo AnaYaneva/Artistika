@@ -75,7 +75,6 @@ export class HomeComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    // return this.authService.isLogged();
     return this.userService.isLoggedIn();
   }
 }

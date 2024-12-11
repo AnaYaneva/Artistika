@@ -87,13 +87,6 @@ export class WorkshopAddComponent {
     return /\.(jpeg|jpg|gif|png|webp|avif)$/.test(url) || /googleusercontent\.com/.test(url);
   }
 
-  // isValidCategory(category: string): boolean {
-  //   return ('Watercolors'|
-  //     'Acrylic Paint'|
-  //     'Soft Pastels'|
-  //     'Oil Paint')$/.test(category);
-  // }
-
   removeWorkshop(workshopId: number): void {
     Swal.fire({
       title: 'Are you sure?',

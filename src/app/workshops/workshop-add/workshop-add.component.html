@@ -17,17 +17,6 @@
             <input [(ngModel)]="newWorkshop.title" name="title" placeholder="Title" required />
             <input [(ngModel)]="newWorkshop.description" name="description" placeholder="Description" required />
             <input [(ngModel)]="newWorkshop.video" name="video" placeholder="YouTube link" required />
-            <!-- <select formControlName="categoryType" (change)="onSelectedCategory()">
-                <option value="">Select Category Type</option>
-                <option *ngFor="let type of categoryTypes" [value]="type">{{ type }}</option>
-            </select>
-
-            <select formControlName="levelType" (change)="onSelectedLevel()">
-                <option value="">Select Level Type</option>
-                <option *ngFor="let type of levelTypes" [value]="type">{{ type }}</option>
-            </select> -->
-            <!-- <input [(ngModel)]="newWorkshop.price" name="price" type="number" placeholder="Price" required />
-            <input [(ngModel)]="newWorkshop.color" name="color" placeholder="Color" required /> -->
             <input [(ngModel)]="newWorkshop.categoryType" name="categoryType" placeholder="Category" required />
             <input [(ngModel)]="newWorkshop.levelType" name="levelType" placeholder="Level of Experience" required />
             <input [(ngModel)]="newWorkshop.img" name="picture" placeholder="Picture URL" required />

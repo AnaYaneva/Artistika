@@ -2,10 +2,6 @@
     <h2 class="text-center">Search Workshops</h2>
     <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="search-form">
         <div class="form-row">
-            <!-- <select formControlName="mentor" (change)="onMentorChange(searchForm.value.brand)">
-                <option value="">Select Mentor</option>
-                <option *ngFor="let mentor of workshopMentor" [value]="mentor">{{ mentor }}</option>
-            </select> -->
 
             <select formControlName="categoryType">
                 <option value="">Select Category Type</option>
@@ -30,7 +26,6 @@
             <img [src]="workshop.img" alt="{{ workshop.title }}" class="workshop-image" />
             <div class="workshop-details">
                 <h4>{{ workshop.title }}</h4>
-                <!-- <p>Mentor: {{ workshop.userId.username}}</p> -->
                 <p>Fuel Type: {{ workshop.categoryType}}</p>
                 <p>Fuel Type: {{ workshop.levelType }}</p>
                 <button (click)="viewDetails(workshop.id)"

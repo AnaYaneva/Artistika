@@ -1,16 +1,6 @@
 {
   "workshops": [
     {
-      "id": 3,
-      "title": "Fantasy Acrylic Painting",
-      "decription": "Unleash your creativity in acrylic painting. Learn techniques for composition, sketching, and color to bring characters to life.",
-      "img": "assets/images/4.jpg",
-      "video": "https://www.youtube.com/embed/z3NZD1PtRBw",
-      "levelType": "Begginer",
-      "categoryType": "Acrylic Paint",
-      "description": "Unleash your creativity in acrylic painting. Learn techniques for composition, sketching, and color to brin"
-    },
-    {
       "id": 1,
       "title": "Architectural Sketching with Watercolor and Ink",
       "decription": "the best workshop",
@@ -18,15 +8,6 @@
       "video": "https://www.youtube.com/embed/z3NZD1PtRBw",
       "levelType": "Begginer",
       "categoryType": "Watercolors"
-    },
-    {
-      "id": 2,
-      "title": "Impressionist Painting with Acrylics",
-      "decription": "Learn how to create vibrant impressionistic paintings using acrylics, focusing on dynamic street scenes and color techniques.",
-      "img": "assets/images/5.jpg",
-      "video": "https://www.youtube.com/embed/z3NZD1PtRBw",
-      "levelType": "Intermediate",
-      "categoryType": "Acrylic Paint"
     },
     {
       "id": 5,
@@ -39,21 +20,12 @@
     },
     {
       "id": 6,
-      "title": "Creative Watercolor Sketching for Beginners",
+      "title": "Creative Watercolor Sketching for BeginnersSAWDF",
       "decription": "Paint exciting watercolor illustrations by exploring playful and unconventional techniques in your sketchbook",
       "img": "assets/images/1.jpg",
       "video": "https://www.youtube.com/embed/xpqMVLw1pY8",
       "levelType": "Intermediate",
       "categoryType": "Watercolors"
-    },
-    {
-      "id": 7,
-      "title": "Realistic Figure Painting with Acrylic",
-      "decription": "Learn the art of highly rendered realistic figure painting. Master sketching, acrylic underpainting, and oil paint rendering.",
-      "img": "assets/images/cat-acrylic.jpg",
-      "video": "https://www.youtube.com/embed/z3NZD1PtRBw",
-      "levelType": "Begginer",
-      "categoryType": "Acrylic Paint"
     },
     {
       "id": 8,
@@ -63,6 +35,15 @@
       "video": "https://www.youtube.com/embed/z3NZD1PtRBw",
       "levelType": "Intermediate",
       "categoryType": "Oil Paint"
+    },
+    {
+      "title": "teSTASDL",
+      "description": "DFGHJKLHJKGFNDBSVCDSFGHJKL",
+      "video": "https://www.youtube.com/embed/snIguDa3V7I",
+      "categoryType": "Soft Pastels",
+      "levelType": "Advanced ",
+      "img": "https://www.concretepage.com/angular/images/angular-select-option-reactive-form.jpg",
+      "id": 9
     }
   ],
   "comments": [],
@@ -98,6 +79,13 @@
       "password": "123456",
       "role": "user",
       "id": 5
+    },
+    {
+      "username": "ana_yaneva11",
+      "email": "a.hristeva@seeburg1er.com",
+      "password": "123456",
+      "role": "user",
+      "id": 6
     }
   ]
 }
